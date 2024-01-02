@@ -2,7 +2,9 @@ package br.com.movieapp.movie_popular_feature.presentation.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -40,9 +42,7 @@ fun MovieRate(
             color = Color.White,
             fontSize = 10.sp
         )
-
     }
-
 }
 
 @Preview
