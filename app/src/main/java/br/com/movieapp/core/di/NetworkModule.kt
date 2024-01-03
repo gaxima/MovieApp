@@ -28,13 +28,14 @@ object NetworkModule {
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
             setLevel(
-                if(BuildConfig.DEBUG)
+                if (BuildConfig.DEBUG)
                     HttpLoggingInterceptor.Level.BODY
                 else
                     HttpLoggingInterceptor.Level.NONE
             )
         }
     }
+
     @Provides
     fun provideHttpClient(
         paramsInterceptor: ParamsInterceptor,
@@ -53,6 +54,7 @@ object NetworkModule {
         return GsonConverterFactory.create()
     }
 
+    @Provides
     fun provideMovieService(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
