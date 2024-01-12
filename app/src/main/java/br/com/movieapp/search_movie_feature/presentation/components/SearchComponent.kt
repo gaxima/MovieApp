@@ -6,13 +6,16 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -23,6 +26,7 @@ import br.com.movieapp.R
 import br.com.movieapp.search_movie_feature.MovieSearchEvent
 import br.com.movieapp.ui.theme.white
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchComponent(
     modifier: Modifier = Modifier,
@@ -30,6 +34,9 @@ fun SearchComponent(
     onSearch: (String) -> Unit,
     onQueryChangeEvent: (MovieSearchEvent) -> Unit
 ) {
+
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     OutlinedTextField(
         value = query,
         onValueChange = {
@@ -39,6 +46,7 @@ fun SearchComponent(
             IconButton(
                 onClick = {
                     onSearch(query)
+                    keyboardController?.hide()
                 }
             ) {
                 Icon(
@@ -59,6 +67,10 @@ fun SearchComponent(
         keyboardActions = KeyboardActions(
             onSearch = {
                 onSearch(query)
+                keyboardController?.hide()
+            },
+            onDone = {
+                keyboardController?.hide()
             }
         ),
         colors = TextFieldDefaults.textFieldColors(

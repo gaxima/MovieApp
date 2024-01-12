@@ -102,28 +102,6 @@ fun MovieContent(
                     }
                 }
             }
-////                    loadState.refresh is androidx.paging.LoadState.Error -> {
-////                        val e = pagingMovies.loadState.refresh as androidx.paging.LoadState.Error
-////                        item {
-////                            ErrorItem(
-////                                message = e.error.localizedMessage ?: "Unknown error",
-////                                modifier = Modifier.fillMaxSize(),
-////                                onClickRetry = { retry() }
-////                            )
-////                        }
-////                    }
-////                    loadState.append is androidx.paging.LoadState.Error -> {
-////                        val e = pagingMovies.loadState.append as androidx.paging.LoadState.Error
-////                        item {
-////                            ErrorItem(
-////                                message = e.error.localizedMessage ?: "Unknown error",
-////                                modifier = Modifier.fillMaxSize(),
-////                                onClickRetry = { retry() }
-////                            )
-////                        }
-////                    }
-////                }
-//            }
         }
     }
 }

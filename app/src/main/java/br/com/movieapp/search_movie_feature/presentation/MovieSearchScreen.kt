@@ -14,6 +14,7 @@ import br.com.movieapp.search_movie_feature.presentation.state.MovieSearchState
 import br.com.movieapp.ui.theme.black
 import br.com.movieapp.ui.theme.white
 
+
 @Composable
 fun MovieSearchScreen(
     uiState: MovieSearchState,

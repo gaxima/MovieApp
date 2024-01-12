@@ -1,6 +1,6 @@
-package br.com.movieapp.core.di
+package br.com.fiap.core.network.di
 
-import br.com.movieapp.BuildConfig
+import br.com.fiap.core.network.BuildConfig
 import br.com.movieapp.core.data.remote.MovieService
 import br.com.movieapp.core.data.remote.ParamsInterceptor
 import dagger.Module
@@ -16,7 +16,6 @@ import java.util.concurrent.TimeUnit
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
     private const val TIMEOUT_SECONDS = 15L
 
     @Provides
@@ -66,4 +65,5 @@ object NetworkModule {
             .build()
             .create(MovieService::class.java)
     }
+
 }
