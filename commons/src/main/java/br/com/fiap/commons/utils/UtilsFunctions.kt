@@ -1,7 +1,5 @@
 package br.com.movieapp.core.utils
 
-import android.util.Log
-import br.com.movieapp.BuildConfig
 import timber.log.Timber
 
 object UtilsFunctions {
