@@ -1,6 +1,6 @@
 package br.com.movieapp.core.utils
 
-import br.com.fiap.commons.BuildConfig
+import br.com.movieapp.commons.BuildConfig
 
 
 fun String?.toPostUrl() = "${BuildConfig.BASE_URL_IMAGE}$this"

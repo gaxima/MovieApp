@@ -12,13 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
+import br.com.movieapp.commons.components.ErrorScreen
+import br.com.movieapp.commons.components.LoadingItem
 import br.com.movieapp.core.domain.model.Movie
-import br.com.movieapp.core.presentation.components.common.ErrorScreen
-import br.com.movieapp.core.presentation.components.common.LoadingItem
+
 
 @Composable
 fun MovieContent(

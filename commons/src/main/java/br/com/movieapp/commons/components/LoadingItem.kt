@@ -1,4 +1,4 @@
-package br.com.movieapp.core.presentation.components.common
+package br.com.movieapp.commons.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

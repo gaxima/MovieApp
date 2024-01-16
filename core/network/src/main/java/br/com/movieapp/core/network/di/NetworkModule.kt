@@ -1,8 +1,8 @@
-package br.com.fiap.core.network.di
+package br.com.movieapp.core.network.di
 
-import br.com.fiap.core.network.BuildConfig
+import br.com.movieapp.core.network.BuildConfig
 import br.com.movieapp.core.data.remote.MovieService
-import br.com.movieapp.core.data.remote.ParamsInterceptor
+import br.com.movieapp.core.network.data.remote.ParamsInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

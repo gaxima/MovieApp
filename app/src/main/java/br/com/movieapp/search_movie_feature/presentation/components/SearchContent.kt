@@ -24,9 +24,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
+import br.com.movieapp.commons.components.ErrorScreen
+import br.com.movieapp.commons.components.LoadingItem
 import br.com.movieapp.core.domain.model.MovieSearch
-import br.com.movieapp.core.presentation.components.common.ErrorScreen
-import br.com.movieapp.core.presentation.components.common.LoadingItem
 import br.com.movieapp.movie_popular_feature.presentation.components.MovieItem
 import br.com.movieapp.search_movie_feature.MovieSearchEvent
 import br.com.movieapp.ui.theme.black

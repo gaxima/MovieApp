@@ -10,14 +10,13 @@ def apiKeyProperties = new Properties()
 apiKeyProperties.load(new FileInputStream(apiKeyPropertiesFile))
 
 android {
-    namespace 'br.com.fiap.core.network'
+    namespace 'br.com.movieapp.core.network'
     compileSdk 34
 
     defaultConfig {
         minSdk 24
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
 
         buildConfigField "String", "API_KEY", apiKeyProperties['API_KEY']
         buildConfigField "String", "BASE_URL", apiKeyProperties['BASE_URL']
@@ -27,7 +26,6 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {

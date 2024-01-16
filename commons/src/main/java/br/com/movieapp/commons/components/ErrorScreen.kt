@@ -1,4 +1,6 @@
-package br.com.movieapp.core.presentation.components.common
+package br.com.movieapp.commons.components
+
+
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -12,6 +14,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import br.com.movieapp.ui.theme.white
+
 
 @Composable
 fun ErrorScreen(
