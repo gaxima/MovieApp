@@ -48,4 +48,6 @@ dependencies {
     api 'androidx.compose.material:material:1.5.4'
     api "androidx.compose.ui:ui-tooling:1.5.4"
     debugImplementation "androidx.compose.ui:ui-test-manifest:1.5.4"
+
+    api "io.coil-kt:coil-compose:2.2.2"
 }
