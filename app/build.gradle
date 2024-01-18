@@ -64,6 +64,7 @@ dependencies {
     implementation project(':commons')
     implementation project(':ui')
     implementation project(':movie_popular_feature')
+    implementation project(':search_movie_feature')
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'

@@ -2,7 +2,6 @@ package br.com.movieapp.core.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -11,6 +10,7 @@ import br.com.movieapp.movie_popular_feature.presentation.MoviePopularViewModel
 import br.com.movieapp.search_movie_feature.MovieSearchEvent
 import br.com.movieapp.search_movie_feature.presentation.MovieSearchScreen
 import br.com.movieapp.search_movie_feature.presentation.MovieSearchViewModel
+
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {

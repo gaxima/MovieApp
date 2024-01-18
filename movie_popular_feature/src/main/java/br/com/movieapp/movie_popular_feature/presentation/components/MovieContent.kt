@@ -18,6 +18,7 @@ import androidx.paging.compose.LazyPagingItems
 import br.com.movieapp.movie_popular_feature.data.model.Movie
 import br.com.movieapp.ui.components.ErrorScreen
 import br.com.movieapp.ui.components.LoadingItem
+import br.com.movieapp.ui.components.MovieItem
 
 
 @Composable
