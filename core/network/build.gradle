@@ -39,7 +39,6 @@ android {
 
 dependencies {
 
-    implementation project(':commons')
 
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -59,4 +58,7 @@ dependencies {
 
     //Gson
     implementation "com.google.code.gson:gson:2.10"
+
+
+    testImplementation 'junit:junit:4.13.2'
 }

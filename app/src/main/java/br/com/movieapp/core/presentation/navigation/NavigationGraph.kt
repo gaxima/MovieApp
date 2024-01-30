@@ -47,7 +47,7 @@ fun NavigationGraph(navController: NavHostController) {
             )
         }
         composable(BottomNavItem.MovieFavorite.route) {
-            //MovieFavoriteScreen()
+
         }
     }
 

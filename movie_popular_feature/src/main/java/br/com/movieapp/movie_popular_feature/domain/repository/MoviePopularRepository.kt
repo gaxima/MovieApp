@@ -3,7 +3,7 @@ package br.com.movieapp.movie_popular_feature.domain.repository
 
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import br.com.movieapp.movie_popular_feature.data.model.Movie
+import br.com.movieapp.commons.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MoviePopularRepository {

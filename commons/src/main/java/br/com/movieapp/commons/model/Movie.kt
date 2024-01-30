@@ -1,4 +1,4 @@
-package br.com.movieapp.movie_popular_feature.data.model
+package br.com.movieapp.commons.model
 
 data class Movie(
     val id: Int,

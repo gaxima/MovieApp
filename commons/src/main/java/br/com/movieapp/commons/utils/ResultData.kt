@@ -1,4 +1,4 @@
-package br.com.movieapp.core.utils
+package br.com.movieapp.commons.utils
 
 
 sealed class ResultData<out T> {
