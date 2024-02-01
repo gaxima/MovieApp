@@ -70,7 +70,7 @@ fun MovieDetailsInfos(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun MovieDetailsInfosPreview() {
     MovieInfoContent(
@@ -88,3 +88,4 @@ fun MovieDetailsInfosPreview() {
         modifier = Modifier.fillMaxWidth()
     )
 }
+
