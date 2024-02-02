@@ -1,0 +1,13 @@
+object AppConfig {
+    const val compileSdkVersion = 33
+    const val minSdkVersion = 25
+    const val targetSdkVersion = 32
+    const val versionName = "1.0.0"
+    const val versionCode = 1
+
+    const val groupId = "br.com.app.futebolnatv"
+    const val applicationId = groupId
+    const val scheme = "appfutebolnatv"
+
+}
+
