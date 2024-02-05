@@ -3,8 +3,8 @@ package br.com.movieapp.domain.usecase
 
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import br.com.movieapp.commons.model.Movie
 import br.com.movieapp.commons.utils.ResultData
+import br.com.movieapp.core.network.model.Movie
 import br.com.movieapp.data.model.MovieDetails
 import br.com.movieapp.domain.repository.MovieDetailsRepository
 import kotlinx.coroutines.Dispatchers

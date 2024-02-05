@@ -2,7 +2,7 @@ package br.com.movieapp.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import br.com.movieapp.commons.model.Movie
+import br.com.movieapp.core.network.model.Movie
 import br.com.movieapp.domain.source.MovieDetailsRemoteDataSource
 import br.com.movieapp.movie_popular_feature.data.mapper.toMovie
 import okio.IOException

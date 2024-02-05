@@ -1,6 +1,6 @@
 package br.com.movieapp.data.mapper
 
-import br.com.movieapp.commons.model.Movie
+import br.com.movieapp.core.network.model.Movie
 import br.com.movieapp.data.model.MovieDetails
 
 fun MovieDetails.toMovie(): Movie {

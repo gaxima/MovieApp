@@ -15,7 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
-import br.com.movieapp.commons.model.Movie
+import br.com.movieapp.core.network.model.Movie
 import br.com.movieapp.ui.components.ErrorScreen
 import br.com.movieapp.ui.components.LoadingItem
 import br.com.movieapp.ui.components.MovieItem

@@ -1,16 +1,11 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
 }
-
-val apiKeyPropertiesFile = rootProject.file("apikey.properties")
-val apiKeyProperties = Properties()
-FileInputStream(apiKeyPropertiesFile).use { inputStream ->
-    apiKeyProperties.load(inputStream)
-}
-
 
 android {
     namespace = AppConfig.applicationId
@@ -23,26 +18,32 @@ android {
         versionCode = AppConfig.versionCode
         versionName = AppConfig.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         vectorDrawables {
             useSupportLibrary = true
         }
 
-
-        buildConfigField("String", "API_KEY", "\"${apiKeyProperties.getProperty("API_KEY")}\"")
-        buildConfigField("String", "BASE_URL", "\"${apiKeyProperties.getProperty("BASE_URL")}\"")
+        //load the values from .properties file
+        val keystoreFile = project.rootProject.file("apikey.properties")
+        val properties = Properties()
+        properties.load(keystoreFile.inputStream())
+        //return empty key in case something goes wrong
+        val apiKey = properties.getProperty("API_KEY") ?: ""
         buildConfigField(
-            "String",
-            "BASE_URL_IMAGE",
-            "\"${apiKeyProperties.getProperty("BASE_URL_IMAGE")}\""
+            type = "String",
+            name = "API_KEY",
+            value = apiKey
         )
     }
 
     buildTypes {
         release {
-            minifyEnabled = false
-            proguardFiles getDefaultProguardFile ("proguard-android-optimize.txt"), "proguard-rules.pro"
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -68,12 +69,12 @@ android {
 dependencies {
 
 
-    implementation project (":core:network")
-    implementation project (":commons")
-    implementation project (":ui")
-    implementation project (":movie_popular_feature")
-    implementation project (":search_movie_feature")
-    implementation project (":details_movie_feature")
+    implementation(project(":core:network"))
+    implementation(project(":commons"))
+    implementation(project(":ui"))
+    implementation(project(":movie_popular_feature"))
+    implementation(project(":search_movie_feature"))
+    implementation(project(":details_movie_feature"))
 
     implementation(Libs.Kotlin.coreKtxVersion())
 
@@ -84,7 +85,7 @@ dependencies {
     debugImplementation(Libs.Compose.getComposeToolingVersion())
     debugImplementation(Libs.Compose.getComposeUiTestManifestVersion())
 
-
+    implementation("com.google.android.material:material:1.11.0")
     //DataStore
     implementation(Libs.DataStore.getDataStoreVersion())
 
@@ -95,7 +96,7 @@ dependencies {
     implementation(Libs.DaggerHilt.getDaggerHiltAndroidVersion())
     implementation(Libs.DaggerHilt.getDaggerHiltNavigationComposeVersion())
     kapt(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
-    kapt kapt (Libs.DaggerHilt.getDaggerHiltCompilerVersion())
+    kapt(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
 
     // Others - Compose dependencies
     implementation(Libs.Compose.getMaterialsIconsExtendedVersion())
