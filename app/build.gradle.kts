@@ -4,7 +4,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -57,7 +57,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.0"
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     packagingOptions {
         resources {
@@ -95,8 +95,8 @@ dependencies {
     //DI - Hilt
     implementation(Libs.DaggerHilt.getDaggerHiltAndroidVersion())
     implementation(Libs.DaggerHilt.getDaggerHiltNavigationComposeVersion())
-    kapt(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
-    kapt(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
+    ksp(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
+    ksp(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
 
     // Others - Compose dependencies
     implementation(Libs.Compose.getMaterialsIconsExtendedVersion())
@@ -114,5 +114,5 @@ dependencies {
     //Room
     implementation(Libs.Room.getRoomVersion())
     implementation(Libs.Room.getRoomRuntimeVersion())
-    kapt(Libs.Room.getRoomCompilerVersion())
+    ksp(Libs.Room.getRoomCompilerVersion())
 }

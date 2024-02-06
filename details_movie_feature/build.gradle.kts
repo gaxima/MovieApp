@@ -2,7 +2,7 @@ plugins {
     id ("com.android.library")
     id ("org.jetbrains.kotlin.android")
     id ("com.google.dagger.hilt.android")
-    id ("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -31,7 +31,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.0"
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
 }
 
@@ -47,8 +47,8 @@ dependencies {
 
     implementation(Libs.DaggerHilt.getDaggerHiltAndroidVersion())
     implementation(Libs.DaggerHilt.getDaggerHiltNavigationComposeVersion())
-    kapt(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
-    kapt(Libs.Hilt.getHiltCompilerVersion())
+    ksp(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
+    ksp(Libs.Hilt.getHiltCompilerVersion())
 
     // Paging3
     implementation(Libs.Paging.getPagingRuntimeVersion())

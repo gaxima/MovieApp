@@ -32,9 +32,9 @@ object Versions {
     const val DATASTORE_VERSION = "1.0.0"
     const val SPLASHSCREEN_VERSION = "1.0.0"
 
-    const val DAGGER_HILT_VERSION = "2.45"
+    const val DAGGER_HILT_VERSION = "2.48"
     const val HILT_NAVIGATION_COMPOSE_VERSION = "1.0.0"
-    const val HILT_COMPILER_VERSION = "1.0.0"
+    const val HILT_COMPILER_VERSION = "1.1.0"
 
     const val LIFECYCLE_VIEWMODEL_VERSION = "2.6.1"
 

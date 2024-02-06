@@ -4,7 +4,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -60,8 +60,8 @@ dependencies {
     //DI - Hilt
     implementation(Libs.DaggerHilt.getDaggerHiltAndroidVersion())
     implementation(Libs.DaggerHilt.getDaggerHiltNavigationComposeVersion())
-    kapt(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
-    kapt(Libs.Hilt.getHiltCompilerVersion())
+    ksp(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
+    ksp(Libs.Hilt.getHiltCompilerVersion())
 
     //Gson
     implementation(Libs.Gson.getGsonVersion())
