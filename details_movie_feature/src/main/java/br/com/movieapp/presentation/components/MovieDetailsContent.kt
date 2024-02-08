@@ -59,12 +59,13 @@ fun MovieDetailsContent(
     Box(
         modifier = modifier
             .fillMaxSize()
+            .fillMaxHeight(0.60f)
             .background(black)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.6f)
+                .fillMaxHeight(0.60f)
                 .verticalScroll(rememberScrollState()),
 
             horizontalAlignment = Alignment.CenterHorizontally
@@ -133,19 +134,9 @@ fun MovieDetailsContent(
                     .padding(horizontal = 8.dp)
             )
             Spacer(modifier = Modifier.height(15.dp))
-
-            Text(
-                text = stringResource(id = br.com.movieapp.ui.R.string.movies_similar),
-                color = white,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.ExtraBold,
-                fontSize = 20.sp,
-                modifier = Modifier
-                    .align(alignment = Alignment.Start)
-                    .padding(horizontal = 8.dp)
-
-            )
         }
+
+
         if (isError.isNotEmpty()) {
             Text(
                 text = isError,
@@ -164,14 +155,32 @@ fun MovieDetailsContent(
                 color = yellow
             )
         }
-
-        MovieDetailsSimilar(
-            pagingMovieSimilar = pagingMoviesSimilar,
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.35f)
-                .align(Alignment.BottomEnd)
-        )
+                .fillMaxHeight(0.40f)
+                .align(alignment = Alignment.BottomStart)
+        ) {
+            Text(
+                text = stringResource(id = br.com.movieapp.ui.R.string.movies_similar),
+                color = white,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 20.sp,
+                modifier = Modifier
+                    .align(alignment = Alignment.Start)
+                    .padding(horizontal = 8.dp)
+            )
+            Spacer(modifier = Modifier.height(15.dp))
+
+            MovieDetailsSimilar(
+                pagingMovieSimilar = pagingMoviesSimilar,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight()
+            )
+        }
+
     }
 }
 

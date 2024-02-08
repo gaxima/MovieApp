@@ -1,0 +1,12 @@
+package br.com.movieapp.persistence.data.entity
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "Movies")
+data class MovieEntity(
+    @PrimaryKey(autoGenerate = false)
+    val movieId: Int,
+    val title: String,
+    val imagemUrl: String
+)
