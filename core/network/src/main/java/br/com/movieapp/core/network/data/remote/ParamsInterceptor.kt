@@ -1,7 +1,7 @@
 package br.com.movieapp.core.network.data.remote
 
+import br.com.movieapp.cmore.network.utils.Constants
 import br.com.movieapp.core.network.BuildConfig
-import br.com.movieapp.core.utils.Constants
 import okhttp3.Interceptor
 import okhttp3.Response
 

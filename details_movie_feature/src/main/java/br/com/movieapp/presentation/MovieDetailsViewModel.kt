@@ -9,10 +9,12 @@ import br.com.movieapp.commons.utils.ResultData
 import br.com.movieapp.core.utils.UtilsFunctions
 import br.com.movieapp.domain.usecase.GetMovieDetailsUseCase
 import br.com.movieapp.presentation.state.MovieDetailsState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
     private val movieDetailsUseCase: GetMovieDetailsUseCase
 ) : ViewModel() {
@@ -23,6 +25,7 @@ class MovieDetailsViewModel @Inject constructor(
     fun getMovieDetails(getMovieDetails: MovieDetailsEvent.GetMovieDetails) {
         event(getMovieDetails)
     }
+
 
     private fun event(event: MovieDetailsEvent) {
         when (event) {

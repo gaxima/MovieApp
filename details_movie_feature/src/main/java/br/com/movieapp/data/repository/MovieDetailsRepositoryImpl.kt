@@ -19,8 +19,8 @@ class MovieDetailsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getMoviesSimilar(
-        pagingConfig: PagingConfig,
-        movieId: Int
+        movieId: Int,
+        pagingConfig: PagingConfig
     ): Flow<PagingData<Movie>> {
         return Pager(
             config = pagingConfig,

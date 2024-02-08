@@ -3,10 +3,15 @@ package br.com.movieapp.core.presentation.navigation
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import br.com.movieapp.cmore.network.utils.Constants
 import br.com.movieapp.movie_popular_feature.presentation.MoviePopularScreen
 import br.com.movieapp.movie_popular_feature.presentation.MoviePopularViewModel
+import br.com.movieapp.presentation.MovieDetailsScreen
+import br.com.movieapp.presentation.MovieDetailsViewModel
 import br.com.movieapp.search_movie_feature.MovieSearchEvent
 import br.com.movieapp.search_movie_feature.presentation.MovieSearchScreen
 import br.com.movieapp.search_movie_feature.presentation.MovieSearchViewModel
@@ -27,7 +32,7 @@ fun NavigationGraph(navController: NavHostController) {
             MoviePopularScreen(
                 uiState = uiState,
                 navigateToDetailMovie = {
-
+                    navController.navigate(BottomNavItem.MovieDetails.passMovieId(movieId = it))
                 }
             )
         }
@@ -42,10 +47,33 @@ fun NavigationGraph(navController: NavHostController) {
                 onEvent = onEvent,
                 onFetch = onFetch,
                 navigateToDetailMovie = {
+                    navController.navigate(BottomNavItem.MovieDetails.passMovieId(movieId = it))
 
                 }
             )
         }
+
+
+        composable(
+            route = BottomNavItem.MovieDetails.route,
+            arguments = listOf(navArgument(Constants.MOVIE_DETAILS_ARGUMENT_KEY) {
+                type = NavType.IntType
+                defaultValue = 0
+            }
+            )
+        ) {
+
+            val viewModel: MovieDetailsViewModel = hiltViewModel()
+            val uiState = viewModel.uiState
+            val getMovieDetails = viewModel::getMovieDetails
+
+            MovieDetailsScreen(
+                id = it.arguments?.getInt(Constants.MOVIE_DETAILS_ARGUMENT_KEY),
+                uiState = uiState,
+                getMovieDetail = getMovieDetails
+            )
+        }
+
         composable(BottomNavItem.MovieFavorite.route) {
 
         }

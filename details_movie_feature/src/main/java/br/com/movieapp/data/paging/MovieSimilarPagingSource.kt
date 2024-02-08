@@ -23,7 +23,7 @@ class MovieSimilarPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
         return try {
             val pageNumber = params.key ?: 1
-            val response = remoteDataSource.getMoviesSimilar(page = pageNumber, movieId = movieId)
+            val response = remoteDataSource.getMoviesSimilar( page = pageNumber, movieId = movieId)
 
             val movies = response.results
 

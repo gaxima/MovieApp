@@ -1,6 +1,6 @@
 package br.com.movieapp.movie_popular_feature.domain.source
 
-import br.com.movieapp.core.data.remote.response.MoviesResponse
+import br.com.movieapp.core.network.data.remote.response.MoviesResponse
 import br.com.movieapp.movie_popular_feature.data.paging.MoviePagingSource
 
 interface MoviePopularRemoteDataSource {

@@ -10,6 +10,6 @@ interface MovieDetailsRepository {
 
     suspend fun getMovieDetails(movieId: Int): MovieDetails
 
-    suspend fun getMoviesSimilar(pagingConfig: PagingConfig, movieId: Int): Flow<PagingData<Movie>>
+    suspend fun getMoviesSimilar(movieId: Int, pagingConfig: PagingConfig): Flow<PagingData<Movie>>
 
 }

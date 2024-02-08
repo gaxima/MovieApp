@@ -2,17 +2,15 @@ package br.com.movieapp
 
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import br.com.movieapp.commons.model.Movie
 import br.com.movieapp.core.data.remote.model.MoviesResult
-import br.com.movieapp.core.data.remote.response.MoviesResponse
+import br.com.movieapp.core.network.data.remote.response.MoviesResponse
+import br.com.movieapp.core.network.model.Movie
 import br.com.movieapp.movie_popular_feature.data.paging.MoviePagingSource
 import br.com.movieapp.movie_popular_feature.data.repository.MoviePopularRepositoryImpl
 import br.com.movieapp.movie_popular_feature.domain.source.MoviePopularRemoteDataSource
 import io.mockk.coEvery
 import io.mockk.mockk
-import io.mockk.mockkObject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest

@@ -1,10 +1,12 @@
 package br.com.movieapp.core.presentation.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Details
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Movie
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
+import br.com.movieapp.cmore.network.utils.Constants.MOVIE_DETAILS_ARGUMENT_KEY
 
 sealed class BottomNavItem(val title: String, val icon: ImageVector, val route: String) {
 
@@ -26,4 +28,13 @@ sealed class BottomNavItem(val title: String, val icon: ImageVector, val route: 
         "movie_favorite_screen"
     )
 
+    object MovieDetails : BottomNavItem(
+        "Detalhes",
+        Icons.Default.Details,
+        "movie_details_destination?$MOVIE_DETAILS_ARGUMENT_KEY=" +
+                "{$MOVIE_DETAILS_ARGUMENT_KEY}"
+    ) {
+        fun passMovieId(movieId: Int) =
+            "movie_details_destination?$MOVIE_DETAILS_ARGUMENT_KEY=$movieId"
+    }
 }

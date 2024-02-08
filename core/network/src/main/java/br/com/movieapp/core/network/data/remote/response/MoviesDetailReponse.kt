@@ -1,4 +1,4 @@
-package br.com.movieapp.core.data.remote.response
+package br.com.movieapp.core.network.data.remote.response
 
 import br.com.movieapp.core.data.remote.model.Genre
 import br.com.movieapp.core.data.remote.model.ProductionCompany

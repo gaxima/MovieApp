@@ -1,7 +1,7 @@
 package br.com.movieapp.data.source
 
 import br.com.movieapp.core.data.remote.MovieService
-import br.com.movieapp.core.data.remote.response.MoviesResponse
+import br.com.movieapp.core.network.data.remote.response.MoviesResponse
 import br.com.movieapp.core.utils.toBackdropUrl
 import br.com.movieapp.data.model.MovieDetails
 import br.com.movieapp.data.paging.MovieSimilarPagingSource
@@ -30,8 +30,8 @@ class MovieDetailsRemoteDataSourceImpl @Inject constructor(
         )
     }
 
-    override suspend fun getMoviesSimilar(page: Int, movieId: Int): MoviesResponse {
-        return service.getMoviesSimilar(page, movieId)
+    override suspend fun getMoviesSimilar(movieId: Int, page: Int): MoviesResponse {
+        return service.getMoviesSimilar(page = page, movieId = movieId)
     }
 
     override fun getSimilarMoviesPagingSource(movieId: Int): MovieSimilarPagingSource {
