@@ -8,5 +8,5 @@ data class MovieEntity(
     @PrimaryKey(autoGenerate = false)
     val movieId: Int,
     val title: String,
-    val imagemUrl: String
+    val imageUrl: String
 )

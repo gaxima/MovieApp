@@ -3,7 +3,7 @@ package br.com.movieapp.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import br.com.movieapp.core.network.model.Movie
+import br.com.movieapp.commons.model.Movie
 import br.com.movieapp.data.model.MovieDetails
 import br.com.movieapp.domain.repository.MovieDetailsRepository
 import br.com.movieapp.domain.source.MovieDetailsRemoteDataSource

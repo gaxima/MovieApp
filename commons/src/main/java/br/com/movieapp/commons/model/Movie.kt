@@ -1,4 +1,4 @@
-package br.com.movieapp.core.network.model
+package br.com.movieapp.commons.model
 
 data class Movie(
     val id: Int,

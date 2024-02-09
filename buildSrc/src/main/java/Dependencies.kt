@@ -68,7 +68,7 @@ object Versions {
     const val COMPOSE_UI_TEST_VERSION = "1.0.0"
 
     const val FLOW_LAYOUT_VERSION = "0.17.0"
-    const val MATERIAL_VERSION ="1.11.0 "
+    const val MATERIAL_VERSION = "1.11.0"
 
     const val MOCKK_VERSION = "1.12.3"
 }
@@ -130,6 +130,7 @@ object Libs {
 
     object Material{
         fun getMaterialVersion() =
+
             "com.google.android.material:material:${Versions.MATERIAL_VERSION}"
     }
 

@@ -47,6 +47,7 @@ android {
 
 dependencies {
 
+    implementation(project(":commons"))
     implementation(Libs.Kotlin.coreKtxVersion())
     implementation(Libs.Kotlin.getAppCompact())
 

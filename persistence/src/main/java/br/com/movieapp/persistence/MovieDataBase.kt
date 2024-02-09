@@ -2,6 +2,7 @@ package br.com.movieapp.persistence
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import br.com.movieapp.persistence.data.dao.MovieDao
 import br.com.movieapp.persistence.data.entity.MovieEntity
 
 
@@ -11,5 +12,6 @@ import br.com.movieapp.persistence.data.entity.MovieEntity
     exportSchema = false
 )
 abstract class MovieDataBase : RoomDatabase() {
+    abstract fun movieDao(): MovieDao
 
 }

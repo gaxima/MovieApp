@@ -85,7 +85,7 @@ dependencies {
     debugImplementation(Libs.Compose.getComposeToolingVersion())
     debugImplementation(Libs.Compose.getComposeUiTestManifestVersion())
 
-    implementation("com.google.android.material:material:1.11.0")
+    implementation(Libs.Material.getMaterialVersion())
     //DataStore
     implementation(Libs.DataStore.getDataStoreVersion())
 
