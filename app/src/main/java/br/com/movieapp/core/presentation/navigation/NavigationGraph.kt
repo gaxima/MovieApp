@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import br.com.movieapp.cmore.network.utils.Constants
+import br.com.movieapp.movie_favorite_feature.presentation.MovieFavoriteScreen
+import br.com.movieapp.movie_favorite_feature.presentation.MovieFavoriteViewModel
 import br.com.movieapp.movie_popular_feature.presentation.MoviePopularScreen
 import br.com.movieapp.movie_popular_feature.presentation.MoviePopularViewModel
 import br.com.movieapp.presentation.MovieDetailsScreen
@@ -65,17 +67,28 @@ fun NavigationGraph(navController: NavHostController) {
 
             val viewModel: MovieDetailsViewModel = hiltViewModel()
             val uiState = viewModel.uiState
+            val onAddFavorite = viewModel::onAddFavorite
+            val checkedFavorite = viewModel::checkedFavorite
             val getMovieDetails = viewModel::getMovieDetails
 
             MovieDetailsScreen(
                 id = it.arguments?.getInt(Constants.MOVIE_DETAILS_ARGUMENT_KEY),
                 uiState = uiState,
+                onAddFavorite = onAddFavorite,
+                checkedFavorite = checkedFavorite,
                 getMovieDetail = getMovieDetails
             )
         }
 
         composable(BottomNavItem.MovieFavorite.route) {
-
+            val viewModel: MovieFavoriteViewModel = hiltViewModel()
+            val uiState = viewModel.uiState
+            MovieFavoriteScreen(
+                uiState = uiState,
+                navigateToDetails = {
+                    navController.navigate(BottomNavItem.MovieDetails.passMovieId(movieId = it))
+                }
+            )
         }
     }
 

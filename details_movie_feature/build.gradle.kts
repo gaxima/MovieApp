@@ -40,6 +40,7 @@ dependencies {
     implementation (project(":ui"))
     implementation (project(":core:network"))
     implementation (project(":commons"))
+    implementation (project(":movie_favorite_feature"))
 
     implementation(Libs.Kotlin.coreKtxVersion())
     implementation(Libs.Kotlin.getAppCompact())

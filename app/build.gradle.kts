@@ -75,6 +75,9 @@ dependencies {
     implementation(project(":movie_popular_feature"))
     implementation(project(":search_movie_feature"))
     implementation(project(":details_movie_feature"))
+    implementation(project(":movie_favorite_feature"))
+
+
 
     implementation(Libs.Kotlin.coreKtxVersion())
 
