@@ -17,24 +17,11 @@ import br.com.movieapp.ui.theme.white
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MovieDetailsScreen(
-    id: Int?,
     uiState: MovieDetailsState,
     onAddFavorite: (Movie) -> Unit,
-    checkedFavorite: (MovieDetailsEvent.CheckedFavorite) -> Unit,
-    getMovieDetail: (MovieDetailsEvent.GetMovieDetails) -> Unit,
-
-    ) {
+) {
 
     val pagingMoviesSimilar = uiState.results.collectAsLazyPagingItems()
-
-    LaunchedEffect(key1 = true) {
-        if (id != null) {
-            getMovieDetail(MovieDetailsEvent.GetMovieDetails(id))
-            checkedFavorite(MovieDetailsEvent.CheckedFavorite(id))
-        }
-    }
-
-
 
     Scaffold(
         topBar = {
@@ -55,7 +42,9 @@ fun MovieDetailsScreen(
                 isLoading = uiState.isLoading,
                 isError = uiState.isError,
                 iconColor = uiState.iconColor,
-                onAddFavorite = {onAddFavorite(it)}
+                onAddFavorite = {
+                    onAddFavorite(it)
+                }
             )
         }
     )

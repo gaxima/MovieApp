@@ -11,3 +11,4 @@ data class MovieDetails(
     val duration: Int = 0,
     val voteCount: Int = 0
 )
+

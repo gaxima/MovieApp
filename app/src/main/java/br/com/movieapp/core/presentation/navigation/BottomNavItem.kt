@@ -27,14 +27,4 @@ sealed class BottomNavItem(val title: String, val icon: ImageVector, val route: 
         Icons.Default.Favorite,
         "movie_favorite_screen"
     )
-
-    object MovieDetails : BottomNavItem(
-        "Detalhes",
-        Icons.Default.Details,
-        "movie_details_destination?$MOVIE_DETAILS_ARGUMENT_KEY=" +
-                "{$MOVIE_DETAILS_ARGUMENT_KEY}"
-    ) {
-        fun passMovieId(movieId: Int) =
-            "movie_details_destination?$MOVIE_DETAILS_ARGUMENT_KEY=$movieId"
-    }
 }

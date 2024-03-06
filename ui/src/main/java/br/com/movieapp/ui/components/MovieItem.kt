@@ -54,25 +54,18 @@ fun MovieItem(
             elevation = 8.dp
         ) {
             Box {
-                AsyncImage(
-                    model = ImageRequest.Builder(context = LocalContext.current)
-                        .data(imageUrl)
-                        .crossfade(true)
-                        // .error(R.drawable.ic_error_image)
-                        //.placeholder(R.drawable.ic_placeholder)
-                        .build(),
-                    contentDescription = null,
+                AsyncImageUrl(
+                    imageUrl = imageUrl,
                     contentScale = ContentScale.FillHeight,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .align(Alignment.BottomCenter)
+                        .align(Alignment.Center)
                         .background(Color.Black)
                         .clip(RoundedCornerShape(8.dp))
                 )
             }
         }
     }
-
 }
 
 @Preview

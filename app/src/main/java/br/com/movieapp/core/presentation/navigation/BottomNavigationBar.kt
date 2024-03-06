@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import br.com.movieapp.ui.theme.black
@@ -36,7 +37,7 @@ fun BottomNavigationBar(
             BottomNavigationItem(
                 selected = currentRoute == destination.route,
                 onClick = {
-                    navController.navigate(destination.route){
+                    navController.navigate(destination.route) {
                         launchSingleTop = true
                     }
                 },
@@ -49,6 +50,13 @@ fun BottomNavigationBar(
             )
         }
     }
+}
+
+@Composable
+fun currentRoute(navController: NavHostController): String? {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    return navBackStackEntry?.destination?.route
+
 }
 
 @Preview

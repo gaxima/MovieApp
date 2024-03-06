@@ -1,16 +1,13 @@
 package br.com.movieapp.movie_favorite_feature.presentation
 
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.movieapp.movie_favorite_feature.presentation.components.MovieFavoriteContent
 import br.com.movieapp.movie_favorite_feature.presentation.states.MovieFavoriteState
-import br.com.movieapp.ui.theme.black
-import br.com.movieapp.ui.theme.white
+import br.com.movieapp.ui.components.MovieAppBar
 
 @Composable
 fun MovieFavoriteScreen(
@@ -21,15 +18,7 @@ fun MovieFavoriteScreen(
     Scaffold(
         modifier = modifier,
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = stringResource(id = br.com.movieapp.ui.R.string.favorite_movies),
-                        color = white
-                    )
-                },
-                backgroundColor = black
-            )
+            MovieAppBar(title = br.com.movieapp.ui.R.string.favorite_movies)
         },
         content = { paddingValues ->
             MovieFavoriteContent(
@@ -49,6 +38,6 @@ fun MovieFavoriteScreen(
 fun MovieFavoriteScreenPreview() {
     MovieFavoriteScreen(
         uiState = MovieFavoriteState(),
-        navigateToDetails = {} )
-    
+        navigateToDetails = {})
+
 }

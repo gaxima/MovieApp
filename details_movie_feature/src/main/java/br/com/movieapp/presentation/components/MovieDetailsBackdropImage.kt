@@ -11,35 +11,32 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.movieapp.ui.R.drawable.ic_error_image
 import br.com.movieapp.ui.R.drawable.ic_placeholder
+import br.com.movieapp.ui.components.AsyncImageUrl
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
 @Composable
 fun MovieDetailsBackdropImage(
     backdropImageUrl: String,
-    modifier: Modifier
+    modifier: Modifier,
 ) {
     Box(modifier = modifier) {
-        AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(backdropImageUrl)
-                .crossfade(true)
-                .error(ic_error_image)
-                .placeholder(ic_placeholder)
-                .build(),
-            contentDescription = null,
+        AsyncImageUrl(
+            imageUrl = backdropImageUrl,
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxWidth()
         )
     }
 }
 
+
 @Preview
 @Composable
 fun MovieDetailsBackdropImagePreview() {
     MovieDetailsBackdropImage(
         backdropImageUrl = "",
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .height(200.dp)
     )
 }

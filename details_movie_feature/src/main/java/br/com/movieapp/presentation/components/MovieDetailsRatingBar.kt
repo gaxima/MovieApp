@@ -120,7 +120,7 @@ fun MovieDetailsRatingBarPreview() {
             .background(Color.White)
     ) {
         MovieDetailsRatingBar(
-            3.5f,
+            3.7f,
             modifier = Modifier.height(20.dp)
         )
     }

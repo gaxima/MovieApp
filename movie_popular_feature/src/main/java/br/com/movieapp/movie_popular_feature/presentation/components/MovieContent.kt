@@ -88,7 +88,7 @@ fun MovieContent(
                         }
                     }
 
-                    loadState.append is LoadState.Loading -> {
+                    loadState.append is LoadState.Error -> {
                         item(
                             span = {
                                 GridItemSpan(maxLineSpan)

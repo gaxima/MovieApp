@@ -4,17 +4,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.movieapp.cmore.network.utils.Constants
 import br.com.movieapp.commons.model.Movie
 import br.com.movieapp.commons.utils.ResultData
 import br.com.movieapp.core.utils.UtilsFunctions
+import br.com.movieapp.data.model.MovieDetails
 import br.com.movieapp.domain.usecase.GetMovieDetailsUseCase
 import br.com.movieapp.movie_favorite_feature.domain.usecase.AddMovieFavoriteUseCase
 import br.com.movieapp.movie_favorite_feature.domain.usecase.DeleteMovieFavoriteUseCase
 import br.com.movieapp.movie_favorite_feature.domain.usecase.IsMovieFavoriteUseCase
 import br.com.movieapp.presentation.state.MovieDetailsState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.launch
@@ -25,18 +29,27 @@ class MovieDetailsViewModel @Inject constructor(
     private val movieDetailsUseCase: GetMovieDetailsUseCase,
     private val addMovieFavorite: AddMovieFavoriteUseCase,
     private val deleteMovieFavorite: DeleteMovieFavoriteUseCase,
-    private val isMovieFavorite: IsMovieFavoriteUseCase
+    private val isMovieFavorite: IsMovieFavoriteUseCase,
+    savedStateHandler: SavedStateHandle
 ) : ViewModel() {
 
     var uiState by mutableStateOf(MovieDetailsState())
         private set
 
+    private val movieId = savedStateHandler.get<Int>(key = Constants.MOVIE_DETAILS_ARGUMENT_KEY)
 
-    fun checkedFavorite(checkedFavorite: MovieDetailsEvent.CheckedFavorite) {
+    init {
+        movieId?.let { safeMovieId ->
+            checkedFavorite(MovieDetailsEvent.CheckedFavorite(movieId = safeMovieId))
+            getMovieDetails(MovieDetailsEvent.GetMovieDetails(movieId = safeMovieId))
+        }
+    }
+
+    private fun checkedFavorite(checkedFavorite: MovieDetailsEvent.CheckedFavorite) {
         event(checkedFavorite)
     }
 
-    fun getMovieDetails(getMovieDetails: MovieDetailsEvent.GetMovieDetails) {
+    private fun getMovieDetails(getMovieDetails: MovieDetailsEvent.GetMovieDetails) {
         event(getMovieDetails)
     }
 
@@ -47,7 +60,6 @@ class MovieDetailsViewModel @Inject constructor(
             event(MovieDetailsEvent.RemoveFavorite(movie = movie))
         }
     }
-
 
     private fun event(event: MovieDetailsEvent) {
         when (event) {
@@ -71,6 +83,7 @@ class MovieDetailsViewModel @Inject constructor(
                             }
 
                             is ResultData.Loading -> {}
+
                         }
 
                     }
@@ -96,6 +109,7 @@ class MovieDetailsViewModel @Inject constructor(
                             }
 
                             is ResultData.Loading -> {}
+
                         }
                     }
                 }
@@ -138,14 +152,7 @@ class MovieDetailsViewModel @Inject constructor(
                                 uiState = uiState.copy(
                                     isLoading = false,
                                     movieDetails = resultData.data?.second,
-                                    results = resultData.data?.first ?: emptyFlow()
-                                )
-                            }
-
-                            is ResultData.Failure -> {
-                                uiState = uiState.copy(
-                                    isLoading = false,
-                                    isError = resultData.e?.message.toString()
+                                    results = resultData.data?.first ?: emptyFlow(),
                                 )
                             }
 
@@ -165,6 +172,7 @@ class MovieDetailsViewModel @Inject constructor(
                                     isLoading = true
                                 )
                             }
+
                         }
 
                     }

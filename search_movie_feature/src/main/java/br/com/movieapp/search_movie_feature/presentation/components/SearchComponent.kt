@@ -34,6 +34,7 @@ fun SearchComponent(
 
     val keyboardController = LocalSoftwareKeyboardController.current
 
+
     OutlinedTextField(
         value = query,
         onValueChange = {

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.movieapp.commons.model.Movie
 import br.com.movieapp.movie_favorite_feature.R
+import br.com.movieapp.ui.components.AsyncImageUrl
 import br.com.movieapp.ui.theme.black
 import br.com.movieapp.ui.theme.white
 import coil.compose.AsyncImage
@@ -49,16 +51,13 @@ fun MovieFavoriteItem(
                     .fillMaxWidth()
                     .height(200.dp)
             ) {
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(movie.imageUrl)
-                        .crossfade(true)
-                        .error(br.com.movieapp.ui.R.drawable.ic_error_image)
-                        .placeholder(br.com.movieapp.ui.R.drawable.ic_placeholder)
-                        .build(),
-                    contentDescription = "",
+
+                AsyncImageUrl(
+                    imageUrl = movie.imageUrl,
                     contentScale = ContentScale.FillWidth,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
                 )
             }
             Text(
@@ -77,7 +76,7 @@ fun MovieFavoriteItem(
 @Composable
 fun MovieFavoriteItemPreview() {
     MovieFavoriteItem(
-        movie =  Movie(
+        movie = Movie(
             id = 1,
             title = "Homem Aranha",
             voteAverage = 7.89,

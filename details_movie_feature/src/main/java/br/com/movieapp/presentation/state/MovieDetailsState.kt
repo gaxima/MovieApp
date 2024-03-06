@@ -12,6 +12,5 @@ data class MovieDetailsState(
     val isLoading: Boolean = false,
     val isError: String = "",
     val iconColor: Color = Color.White,
-    val results: Flow<PagingData<Movie>> = emptyFlow()
-
+    val results: Flow<PagingData<Movie>> = emptyFlow(),
 )

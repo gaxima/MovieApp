@@ -34,10 +34,11 @@ fun NavigationGraph(navController: NavHostController) {
             MoviePopularScreen(
                 uiState = uiState,
                 navigateToDetailMovie = {
-                    navController.navigate(BottomNavItem.MovieDetails.passMovieId(movieId = it))
+                    navController.navigate(DetailScreenNav.MovieDetails.passMovieId(movieId = it))
                 }
             )
         }
+
         composable(BottomNavItem.MovieSearch.route) {
 
             val viewModel: MovieSearchViewModel = hiltViewModel()
@@ -49,15 +50,14 @@ fun NavigationGraph(navController: NavHostController) {
                 onEvent = onEvent,
                 onFetch = onFetch,
                 navigateToDetailMovie = {
-                    navController.navigate(BottomNavItem.MovieDetails.passMovieId(movieId = it))
-
+                    navController.navigate(DetailScreenNav.MovieDetails.passMovieId(movieId = it))
                 }
             )
         }
 
 
         composable(
-            route = BottomNavItem.MovieDetails.route,
+            route = DetailScreenNav.MovieDetails.route,
             arguments = listOf(navArgument(Constants.MOVIE_DETAILS_ARGUMENT_KEY) {
                 type = NavType.IntType
                 defaultValue = 0
@@ -68,15 +68,10 @@ fun NavigationGraph(navController: NavHostController) {
             val viewModel: MovieDetailsViewModel = hiltViewModel()
             val uiState = viewModel.uiState
             val onAddFavorite = viewModel::onAddFavorite
-            val checkedFavorite = viewModel::checkedFavorite
-            val getMovieDetails = viewModel::getMovieDetails
 
             MovieDetailsScreen(
-                id = it.arguments?.getInt(Constants.MOVIE_DETAILS_ARGUMENT_KEY),
                 uiState = uiState,
                 onAddFavorite = onAddFavorite,
-                checkedFavorite = checkedFavorite,
-                getMovieDetail = getMovieDetails
             )
         }
 
@@ -86,7 +81,7 @@ fun NavigationGraph(navController: NavHostController) {
             MovieFavoriteScreen(
                 uiState = uiState,
                 navigateToDetails = {
-                    navController.navigate(BottomNavItem.MovieDetails.passMovieId(movieId = it))
+                    navController.navigate(DetailScreenNav.MovieDetails.passMovieId(movieId = it))
                 }
             )
         }

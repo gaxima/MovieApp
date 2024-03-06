@@ -1,15 +1,13 @@
 package br.com.movieapp.movie_popular_feature.presentation
 
 import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.paging.compose.collectAsLazyPagingItems
 import br.com.movieapp.core.utils.UtilsFunctions
 import br.com.movieapp.movie_popular_feature.presentation.components.MovieContent
 import br.com.movieapp.movie_popular_feature.presentation.state.MoviePopularState
-import br.com.movieapp.ui.theme.black
-import br.com.movieapp.ui.theme.white
+import br.com.movieapp.ui.components.MovieAppBar
+
 
 @Composable
 fun MoviePopularScreen(
@@ -20,15 +18,7 @@ fun MoviePopularScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = "Popular Movies",
-                        color = white
-                    )
-                },
-                backgroundColor = black
-            )
+            MovieAppBar(title = br.com.movieapp.ui.R.string.popular_movies)
         }, content = { paddingValues ->
             MovieContent(
                 pagingMovies = movies,

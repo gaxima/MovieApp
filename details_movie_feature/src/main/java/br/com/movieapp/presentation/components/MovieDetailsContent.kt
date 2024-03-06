@@ -71,7 +71,7 @@ fun MovieDetailsContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             MovieDetailsBackdropImage(
-                backdropImageUrl = movieDetails?.backdropPathUrl.toString(),
+                backdropImageUrl = movieDetails?.backdropPathUrl.orEmpty(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -95,7 +95,7 @@ fun MovieDetailsContent(
                 }
             }
             Text(
-                text = movieDetails?.title.toString(),
+                text = movieDetails?.title.orEmpty(),
                 color = white,
                 fontFamily = FontFamily.SansSerif,
                 fontWeight = FontWeight.ExtraBold,
@@ -104,6 +104,7 @@ fun MovieDetailsContent(
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
             Spacer(modifier = Modifier.height(8.dp))
+
             FlowRow(
                 mainAxisSpacing = 10.dp,
                 mainAxisAlignment = MainAxisAlignment.Center,
@@ -117,18 +118,22 @@ fun MovieDetailsContent(
                 }
             }
             Spacer(modifier = Modifier.height(8.dp))
+
             MovieInfoContent(
                 movieDetails = movieDetails,
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(8.dp))
+
             MovieDetailsRatingBar(
                 rating = movieDetails?.voteAverage?.toFloat()?.div(2f) ?: 0f,
                 modifier = Modifier.height(15.dp)
             )
+
             Spacer(modifier = Modifier.height(15.dp))
+
             MovieDetailsDescription(
-                overview = movieDetails?.overview.toString(),
+                overview = movieDetails?.overview.orEmpty(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 8.dp)
