@@ -22,6 +22,9 @@ object Modules {
 
 object Versions {
 
+    const val TRUTH_VERSION = "1.1.3"
+    const val MOCKITO_VERSION = "2.28.2"
+
     const val APP_COMPACT_VERSION = "1.6.1"
     const val ACTIVITY_VERSION = "1.8.2"
     const val KOTLIN_VERSION = "1.8.0"
@@ -90,9 +93,14 @@ object Libs {
         fun getKotlinReflectVersion() =
             "org.jetbrains.kotlin:kotlin-reflect:${Versions.KOTLIN_VERSION}"
 
-        fun coreKtxVersion() = "androidx.core:core-ktx:${Versions.CORE_KTX_VERSION}"
+        fun coreKtxVersion() =
+            "androidx.core:core-ktx:${Versions.CORE_KTX_VERSION}"
 
-        fun getAppCompact() ="androidx.appcompat:appcompat:${Versions.APP_COMPACT_VERSION}"
+        fun getCoreTesting() =
+            "androidx.arch.core:core-testing:${Versions.CORE_KTX_VERSION}"
+
+
+        fun getAppCompact() = "androidx.appcompat:appcompat:${Versions.APP_COMPACT_VERSION}"
     }
 
     object Activity {
@@ -114,7 +122,8 @@ object Libs {
         fun getComposeToolingVersion() =
             "androidx.compose.ui:ui-tooling:${Versions.COMPOSE_UI_VERSION}"
 
-        fun getComposeTestJUnitVersion() = "androidx.compose.ui:ui-test-junit4:1.4.0"
+        fun getComposeTestJUnitVersion() =
+            "androidx.compose.ui:ui-test-junit4:${Versions.COMPOSE_UI_VERSION}"
 
         fun getNavigationComposeVersion() =
             "androidx.navigation:navigation-compose:${Versions.NAVIGATION_COMPOSE_VERSION}"
@@ -128,16 +137,16 @@ object Libs {
 
     }
 
-    object Material{
+    object Material {
         fun getMaterialVersion() =
 
             "com.google.android.material:material:${Versions.MATERIAL_VERSION}"
     }
 
 
-
-    object FlowLayout{
-        fun getFlowVersion() = "com.google.accompanist:accompanist-flowlayout:${Versions.FLOW_LAYOUT_VERSION}"
+    object FlowLayout {
+        fun getFlowVersion() =
+            "com.google.accompanist:accompanist-flowlayout:${Versions.FLOW_LAYOUT_VERSION}"
     }
 
     object DataStore {
@@ -153,8 +162,22 @@ object Libs {
         fun getTimberVersion() = "com.jakewharton.timber:timber:${Versions.TIMBER_VERSION}"
     }
 
-    object Mockk{
+    object Mockk {
         fun getMockkVersion() = "io.mockk:mockk:${Versions.MOCKK_VERSION}"
+    }
+
+    object Mockito {
+        fun getMockitoVersion() = "org.mockito:mockito-core:${Versions.MOCKITO_VERSION}"
+
+        // Dependência do Mockito para testes no Android
+        fun getMockitoAndroidVersion() = "org.mockito:mockito-android:${Versions.MOCKITO_VERSION}"
+
+        // Dependência do Mockito para ser possível mockar classes e métodos constantes
+        fun getMockitoInlineVersion() = "org.mockito:mockito-inline:${Versions.MOCKITO_VERSION}"
+    }
+
+    object Truth {
+        fun getTruthVersion() = "com.google.truth:truth:${Versions.TRUTH_VERSION}"
     }
 
 
@@ -195,6 +218,9 @@ object Libs {
 
         fun getAndroidVersion() =
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINES_VERSION}"
+
+        fun getTestVersion() =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_VERSION}"
     }
 
     object Hilt {
@@ -215,6 +241,9 @@ object Libs {
 
         fun getDaggerHiltNavigationComposeVersion(): String =
             "androidx.hilt:hilt-navigation-compose:${Versions.HILT_NAVIGATION_COMPOSE_VERSION}"
+
+        fun getDaggerHiltTesting() =
+            "com.google.dagger:hilt-android-testing:${Versions.DAGGER_HILT_VERSION}"
     }
 
     object SplashScreen {
@@ -231,7 +260,8 @@ object Libs {
         fun getComposeUiTestVersion() =
             "androidx.compose.ui:ui-test-junit4:${Versions.COMPOSE_UI_TEST_VERSION}"
 
-        fun getCoroutinesTestVersion() = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_VERSION}"
+        fun getCoroutinesTestVersion() =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_VERSION}"
     }
 
     object Paging {

@@ -32,40 +32,53 @@ fun MovieDetailsDescription(
         mutableStateOf(false)
     }
 
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.SpaceEvenly,
-        horizontalAlignment = Alignment.Start
-    ) {
+    if (overview.isBlank()) {
         Text(
-            text = stringResource(id = br.com.movieapp.ui.R.string.description),
+            text = "No description available",
             color = white,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.ExtraBold,
-            fontSize = 20.sp
+            fontSize = 20.sp,
+            modifier = modifier
+                .padding(16.dp)
         )
-        if (expanded) {
+    } else {
+
+        Column(
+            modifier = modifier,
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.Start
+        ) {
             Text(
-                text = overview,
-                color = Color.DarkGray,
+                text = stringResource(id = br.com.movieapp.ui.R.string.description),
+                color = white,
                 fontFamily = FontFamily.SansSerif,
-                fontSize = 15.sp,
-                modifier = Modifier.clickable {
-                    expanded = !expanded
-                }
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 20.sp
             )
-        } else {
-            Text(
-                text = overview,
-                color = Color.DarkGray,
-                fontFamily = FontFamily.SansSerif,
-                fontSize = 15.sp,
-                maxLines = 3,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.clickable {
-                    expanded = !expanded
-                }
-            )
+            if (expanded) {
+                Text(
+                    text = overview,
+                    color = Color.DarkGray,
+                    fontFamily = FontFamily.SansSerif,
+                    fontSize = 15.sp,
+                    modifier = Modifier.clickable {
+                        expanded = !expanded
+                    }
+                )
+            } else {
+                Text(
+                    text = overview,
+                    color = Color.DarkGray,
+                    fontFamily = FontFamily.SansSerif,
+                    fontSize = 15.sp,
+                    maxLines = 3,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.clickable {
+                        expanded = !expanded
+                    }
+                )
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package br.com.movieapp.presentation.components
 
 import MovieDetailsRatingBar
+import MovieDetailsSimilar
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -32,6 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -178,14 +180,26 @@ fun MovieDetailsContent(
             )
             Spacer(modifier = Modifier.height(15.dp))
 
-            MovieDetailsSimilar(
-                pagingMovieSimilar = pagingMoviesSimilar,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-            )
+            if (pagingMoviesSimilar.loadState.refresh !is LoadState.Loading && pagingMoviesSimilar.itemCount < 1) {
+                Text(
+                    text = "Nenhum filme similar encontrado",
+                    color = white,
+                    fontFamily = FontFamily.SansSerif,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.ExtraBold,
+                    fontSize = 20.sp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp)
+                )
+            } else {
+                MovieDetailsSimilar(
+                    pagingMovieSimilar = pagingMoviesSimilar,
+                    modifier = Modifier
+                        .fillMaxSize()
+                )
+            }
         }
-
     }
 }
 

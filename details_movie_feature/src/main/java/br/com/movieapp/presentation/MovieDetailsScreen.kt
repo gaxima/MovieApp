@@ -1,16 +1,19 @@
 package br.com.movieapp.presentation
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.paging.compose.collectAsLazyPagingItems
 import br.com.movieapp.commons.model.Movie
 import br.com.movieapp.presentation.components.MovieDetailsContent
 import br.com.movieapp.presentation.state.MovieDetailsState
+import br.com.movieapp.ui.components.LoadingItem
 import br.com.movieapp.ui.theme.black
 import br.com.movieapp.ui.theme.white
 
@@ -36,17 +39,24 @@ fun MovieDetailsScreen(
             )
         },
         content = {
-            MovieDetailsContent(
-                movieDetails = uiState.movieDetails,
-                pagingMoviesSimilar = pagingMoviesSimilar,
-                isLoading = uiState.isLoading,
-                isError = uiState.isError,
-                iconColor = uiState.iconColor,
-                onAddFavorite = {
-                    onAddFavorite(it)
-                }
-            )
+            if (uiState.isLoading) {
+                LoadingItem(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(black)
+                )
+            } else {
+                MovieDetailsContent(
+                    movieDetails = uiState.movieDetails,
+                    pagingMoviesSimilar = pagingMoviesSimilar,
+                    isLoading = uiState.isLoading,
+                    isError = uiState.isError,
+                    iconColor = uiState.iconColor,
+                    onAddFavorite = {
+                        onAddFavorite(it)
+                    }
+                )
+            }
         }
     )
-
 }

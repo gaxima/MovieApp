@@ -152,14 +152,14 @@ class MovieDetailsViewModel @Inject constructor(
                                 uiState = uiState.copy(
                                     isLoading = false,
                                     movieDetails = resultData.data?.second,
-                                    results = resultData.data?.first ?: emptyFlow(),
+                                    results = resultData.data.first ?: emptyFlow(),
                                 )
                             }
 
                             is ResultData.Failure -> {
                                 uiState = uiState.copy(
                                     isLoading = false,
-                                    isError = resultData.e?.message.toString()
+                                    isError = resultData.e?.message.toString(),
                                 )
                                 UtilsFunctions.logError(
                                     "DETAIL_ERROR",
