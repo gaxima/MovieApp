@@ -29,6 +29,7 @@ object Versions {
     const val ACTIVITY_VERSION = "1.8.2"
     const val KOTLIN_VERSION = "1.8.0"
     const val CORE_KTX_VERSION = "1.7.0"
+    const val CORE_TESTING = "2.2.0"
     const val LIFECYCLE_RUNTIME_VERSION = "2.6.1"
     const val GRADLE_PLUGIN_VERSION = "7.4.2"
 
@@ -97,7 +98,7 @@ object Libs {
             "androidx.core:core-ktx:${Versions.CORE_KTX_VERSION}"
 
         fun getCoreTesting() =
-            "androidx.arch.core:core-testing:${Versions.CORE_KTX_VERSION}"
+            "androidx.arch.core:core-testing:${Versions.CORE_TESTING}"
 
 
         fun getAppCompact() = "androidx.appcompat:appcompat:${Versions.APP_COMPACT_VERSION}"

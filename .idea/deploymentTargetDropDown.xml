@@ -5,6 +5,21 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="test_IsFavorite_should_return_favorite_when_movie_marked_as_favorite()">
+        <State />
+      </entry>
+      <entry key="test_Isfavorite_should_return_null_when_movie_not_marked_as_favorite()">
+        <State />
+      </entry>
+      <entry key="test_delete_movie_should_delete_movie_success()">
+        <State />
+      </entry>
+      <entry key="test_update_movie_should_return_updated_movie()">
+        <State />
+      </entry>
+      <entry key="test_update_movie_when_list_movies_should_return_updated_movies()">
+        <State />
+      </entry>
     </value>
   </component>
 </project>

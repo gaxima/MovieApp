@@ -12,7 +12,8 @@ android {
     defaultConfig {
         minSdk = AppConfig.minSdkVersion
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        //testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "br.com.movieapp.HiltTestRunner"
     }
 
     buildTypes {
@@ -35,9 +36,7 @@ dependencies {
     implementation(Libs.Kotlin.coreKtxVersion())
     implementation(Libs.Kotlin.getAppCompact())
     implementation(Libs.Material.getMaterialVersion())
-    testImplementation(Libs.Test.getJunitVersion())
-    androidTestImplementation(Libs.Test.getExtJunitVersion())
-    androidTestImplementation(Libs.Test.getEspressoVersion())
+
 
     //Room
     implementation(Libs.Room.getRoomVersion())
@@ -49,5 +48,28 @@ dependencies {
     implementation(Libs.DaggerHilt.getDaggerHiltNavigationComposeVersion())
     ksp(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
     ksp(Libs.Hilt.getHiltCompilerVersion())
+
+
+    testImplementation(Libs.Test.getJunitVersion())
+    implementation(Libs.Truth.getTruthVersion())
+    androidTestImplementation(Libs.DaggerHilt.getDaggerHiltTesting())
+    kspAndroidTest(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
+    androidTestImplementation(Libs.Kotlin.getCoreTesting())
+    androidTestImplementation(Libs.Coroutines.getTestVersion())
+    androidTestImplementation(Libs.Truth.getTruthVersion())
+
+    testImplementation(Libs.Mockito.getMockitoVersion())
+    androidTestImplementation(Libs.Mockito.getMockitoVersion())
+    testImplementation(Libs.Mockito.getMockitoInlineVersion())
+
+
+    androidTestImplementation(Libs.Test.getExtJunitVersion())
+    androidTestImplementation(Libs.Test.getEspressoVersion())
+
+    androidTestImplementation(Libs.Test.getComposeUiTestVersion())
+
+
+    debugImplementation(Libs.Compose.getComposeToolingVersion())
+    debugImplementation(Libs.Compose.getComposeUiTestManifestVersion())
 
 }
