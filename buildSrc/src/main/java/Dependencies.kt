@@ -23,7 +23,8 @@ object Modules {
 object Versions {
 
     const val TRUTH_VERSION = "1.1.3"
-    const val MOCKITO_VERSION = "2.28.2"
+    const val MOCKITO_VERSION_INLINE = "2.28.2"
+    const val MOCKITO_VERSION = "2.2.0"
 
     const val APP_COMPACT_VERSION = "1.6.1"
     const val ACTIVITY_VERSION = "1.8.2"
@@ -75,6 +76,8 @@ object Versions {
     const val MATERIAL_VERSION = "1.11.0"
 
     const val MOCKK_VERSION = "1.12.3"
+
+    const val JAVAX_INJECT_VERSION = "1"
 }
 
 object Libs {
@@ -83,6 +86,7 @@ object Libs {
         fun getToolsGradleVersion() =
             "com.android.tools.build:gradle:${Versions.GRADLE_PLUGIN_VERSION}"
     }
+
 
     object Kotlin {
         fun getKotlinGradlePluginVersion() =
@@ -140,7 +144,6 @@ object Libs {
 
     object Material {
         fun getMaterialVersion() =
-
             "com.google.android.material:material:${Versions.MATERIAL_VERSION}"
     }
 
@@ -156,29 +159,46 @@ object Libs {
     }
 
     object Coil {
-        fun getCoilVersion() = "io.coil-kt:coil-compose:${Versions.COIL_VERSION}"
+        fun getCoilVersion() =
+            "io.coil-kt:coil-compose:${Versions.COIL_VERSION}"
     }
 
     object Timber {
-        fun getTimberVersion() = "com.jakewharton.timber:timber:${Versions.TIMBER_VERSION}"
+        fun getTimberVersion() =
+            "com.jakewharton.timber:timber:${Versions.TIMBER_VERSION}"
     }
 
     object Mockk {
-        fun getMockkVersion() = "io.mockk:mockk:${Versions.MOCKK_VERSION}"
+        fun getMockkVersion() =
+            "io.mockk:mockk:${Versions.MOCKK_VERSION}"
+    }
+
+    object Javax {
+        fun getJavaxInjectVersion() =
+            "javax.inject:javax.inject:${Versions.JAVAX_INJECT_VERSION}"
     }
 
     object Mockito {
-        fun getMockitoVersion() = "org.mockito:mockito-core:${Versions.MOCKITO_VERSION}"
+        fun getMockitoVersion() =
+            "org.mockito:mockito-core:${Versions.MOCKITO_VERSION}"
 
         // Dependência do Mockito para testes no Android
-        fun getMockitoAndroidVersion() = "org.mockito:mockito-android:${Versions.MOCKITO_VERSION}"
+        fun getMockitoAndroidVersion() =
+            "org.mockito:mockito-android:${Versions.MOCKITO_VERSION}"
 
         // Dependência do Mockito para ser possível mockar classes e métodos constantes
-        fun getMockitoInlineVersion() = "org.mockito:mockito-inline:${Versions.MOCKITO_VERSION}"
+        fun getMockitoInlineVersion() =
+            "org.mockito:mockito-inline:${Versions.MOCKITO_VERSION_INLINE}"
+
+        fun getMockitoKotlinVersion() =
+            "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.MOCKITO_VERSION}"
+
+
     }
 
     object Truth {
-        fun getTruthVersion() = "com.google.truth:truth:${Versions.TRUTH_VERSION}"
+        fun getTruthVersion() =
+            "com.google.truth:truth:${Versions.TRUTH_VERSION}"
     }
 
 

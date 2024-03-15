@@ -224,7 +224,5 @@ class MovieDaoTest {
         assertThat(moviesResult[2].title).contains(moviesUpdate[2].title)
         assertThat(moviesResult[3].title).contains(moviesUpdate[3].title)
     }
-
-
 }
 

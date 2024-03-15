@@ -2,23 +2,37 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="MovieDaoTest">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\Gabriel Ximenes\.android\avd\default_gabriel.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-13T18:02:53.885463700Z" />
+        </State>
+      </entry>
       <entry key="app">
-        <State />
-      </entry>
-      <entry key="test_IsFavorite_should_return_favorite_when_movie_marked_as_favorite()">
-        <State />
-      </entry>
-      <entry key="test_Isfavorite_should_return_null_when_movie_not_marked_as_favorite()">
-        <State />
-      </entry>
-      <entry key="test_delete_movie_should_delete_movie_success()">
-        <State />
-      </entry>
-      <entry key="test_update_movie_should_return_updated_movie()">
-        <State />
-      </entry>
-      <entry key="test_update_movie_when_list_movies_should_return_updated_movies()">
-        <State />
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\Gabriel Ximenes\.android\avd\default_gabriel.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-13T18:03:10.628372800Z" />
+        </State>
       </entry>
     </value>
   </component>
