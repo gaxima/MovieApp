@@ -21,6 +21,7 @@ import br.com.movieapp.commons.model.Movie
 import br.com.movieapp.movie_favorite_feature.R
 import br.com.movieapp.ui.theme.black
 import br.com.movieapp.ui.theme.white
+import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun MovieFavoriteContent(

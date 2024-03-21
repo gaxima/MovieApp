@@ -38,15 +38,14 @@ dependencies {
     implementation(Libs.Kotlin.coreKtxVersion())
     implementation(Libs.Kotlin.getAppCompact())
     api(Libs.Material.getMaterialVersion())
-    testImplementation(Libs.Test.getJunitVersion())
-    androidTestImplementation(Libs.Test.getExtJunitVersion())
-    androidTestImplementation(Libs.Test.getEspressoVersion())
+
 
     api(Libs.Activity.getActivityComposeVersion())
     api(Libs.Compose.getComposeUIVersion())
     api(Libs.Compose.getComposeToolingPreviewVersion())
     api(Libs.Compose.getComposeMaterialVersion())
     api(Libs.Compose.getComposeToolingVersion())
+    api(Libs.Compose.getLifeCycleComposeRuntimeVersion())
     debugImplementation (Libs.Compose.getComposeUiTestManifestVersion())
     api (Libs.FlowLayout.getFlowVersion())
     implementation("com.google.android.material:material:1.11.0")

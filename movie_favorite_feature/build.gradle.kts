@@ -46,12 +46,40 @@ dependencies {
     implementation(Libs.Kotlin.getAppCompact())
     implementation(Libs.Material.getMaterialVersion())
 
-    testImplementation(Libs.Test.getJunitVersion())
-    androidTestImplementation(Libs.Test.getExtJunitVersion())
-    androidTestImplementation(Libs.Test.getEspressoVersion())
-
     implementation(Libs.DaggerHilt.getDaggerHiltAndroidVersion())
     implementation(Libs.DaggerHilt.getDaggerHiltNavigationComposeVersion())
     ksp(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
     ksp(Libs.Hilt.getHiltCompilerVersion())
+
+    testImplementation(Libs.Test.getCoroutinesTestVersion())
+    ////////////////////////////////////////////
+
+    implementation(Libs.Truth.getTruthVersion())
+
+    //javax inject
+    implementation(Libs.Javax.getJavaxInjectVersion())
+
+    //hilt
+    kspAndroidTest(Libs.DaggerHilt.getDaggerHiltCompilerVersion())
+    androidTestImplementation(Libs.DaggerHilt.getDaggerHiltTesting())
+
+    //Unit tests
+    testImplementation(Libs.Test.getJunitVersion())
+    testImplementation(Libs.Kotlin.getCoreTesting())
+    /**/testImplementation(Libs.Coroutines.getTestVersion())
+    /**/testImplementation(Libs.Mockito.getMockitoKotlinVersion())
+    testImplementation(Libs.Mockito.getMockitoVersion())
+    testImplementation(Libs.Mockito.getMockitoInlineVersion())
+    testImplementation(Libs.Paging.getPagingCommonVersion())
+
+    //instrumentation tests
+    androidTestImplementation(Libs.Kotlin.getCoreTesting())
+    androidTestImplementation(Libs.Coroutines.getTestVersion())
+    androidTestImplementation(Libs.Truth.getTruthVersion())
+    androidTestImplementation(Libs.Test.getExtJunitVersion())
+    androidTestImplementation(Libs.Test.getEspressoVersion())
+
+    androidTestImplementation(Libs.Test.getComposeUiTestVersion())
+    debugImplementation(Libs.Compose.getComposeToolingVersion())
+    debugImplementation(Libs.Compose.getComposeUiTestManifestVersion())
 }

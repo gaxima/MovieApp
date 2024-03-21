@@ -5,6 +5,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import br.com.movieapp.commons.model.Movie
 import br.com.movieapp.movie_favorite_feature.presentation.components.MovieFavoriteContent
 import br.com.movieapp.movie_favorite_feature.presentation.states.MovieFavoriteState
 import br.com.movieapp.ui.components.MovieAppBar
@@ -12,9 +13,10 @@ import br.com.movieapp.ui.components.MovieAppBar
 @Composable
 fun MovieFavoriteScreen(
     modifier: Modifier = Modifier,
-    uiState: MovieFavoriteState,
+    movies: List<Movie>,
     navigateToDetails: (Int) -> Unit
 ) {
+
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -24,7 +26,7 @@ fun MovieFavoriteScreen(
             MovieFavoriteContent(
                 modifier = Modifier,
                 paddingValues = paddingValues,
-                movies = uiState.movies,
+                movies = movies,
                 onClick = { movieId ->
                     navigateToDetails(movieId)
                 }
@@ -37,7 +39,7 @@ fun MovieFavoriteScreen(
 @Composable
 fun MovieFavoriteScreenPreview() {
     MovieFavoriteScreen(
-        uiState = MovieFavoriteState(),
-        navigateToDetails = {})
+        movies = emptyList()
+    ) {}
 
 }

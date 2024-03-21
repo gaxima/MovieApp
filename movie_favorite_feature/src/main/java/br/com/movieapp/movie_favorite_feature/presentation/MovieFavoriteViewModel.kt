@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieFavoriteViewModel @Inject constructor(
-   private val getFavoriteMoviesUseCase: GetMoviesFavoriteUseCase
+    private val getFavoriteMoviesUseCase: GetMoviesFavoriteUseCase
 ) : ViewModel() {
 
     var uiState by mutableStateOf(MovieFavoriteState())
@@ -24,12 +24,10 @@ class MovieFavoriteViewModel @Inject constructor(
         fetch()
     }
 
-    private fun fetch(){
+    private fun fetch() {
         viewModelScope.launch {
-            getFavoriteMoviesUseCase.invoke().collectLatest {movies ->
-                uiState = uiState.copy(movies = movies)
-
-            }
+            val movies = getFavoriteMoviesUseCase.invoke()
+            uiState = uiState.copy(movies = movies)
         }
     }
 }

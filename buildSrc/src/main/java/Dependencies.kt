@@ -23,8 +23,9 @@ object Modules {
 object Versions {
 
     const val TRUTH_VERSION = "1.1.3"
-    const val MOCKITO_VERSION_INLINE = "2.28.2"
-    const val MOCKITO_VERSION = "2.2.0"
+    const val MOCKITO_VERSION_INLINE = "3.11.2"
+    const val MOCKITO_VERSION = "5.11.0"
+    const val MOCKITO_KOTLIN = "2.2.0"
 
     const val APP_COMPACT_VERSION = "1.6.1"
     const val ACTIVITY_VERSION = "1.8.2"
@@ -63,7 +64,7 @@ object Versions {
     const val LOGGING_INTERCEPTOR_VERSION = "5.0.0-alpha.2"
 
     const val PAGING_RUNTIME_VERSION = "3.2.1"
-    const val PAGING_COMPOSE_VERSION = "3.2.1"
+    const val PAGING_COMPOSE_VERSION = "3.2.0-rc01"
 
     const val TIMBER_VERSION = "5.0.1"
 
@@ -139,6 +140,9 @@ object Libs {
         fun getComposeUiTestManifestVersion() =
             "androidx.compose.ui:ui-test-manifest:${Versions.COMPOSE_UI_VERSION}"
 
+        fun getLifeCycleComposeRuntimeVersion() =
+            "androidx.lifecycle:lifecycle-runtime-compose:${Versions.LIFECYCLE_RUNTIME_VERSION}"
+
 
     }
 
@@ -191,7 +195,7 @@ object Libs {
             "org.mockito:mockito-inline:${Versions.MOCKITO_VERSION_INLINE}"
 
         fun getMockitoKotlinVersion() =
-            "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.MOCKITO_VERSION}"
+            "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.MOCKITO_KOTLIN}"
 
 
     }
@@ -291,6 +295,9 @@ object Libs {
 
         fun getPagingComposeVersion() =
             "androidx.paging:paging-compose:${Versions.PAGING_COMPOSE_VERSION}"
+
+        fun getPagingCommonVersion() =
+            "androidx.paging:paging-common:${Versions.PAGING_RUNTIME_VERSION}"
     }
 
     object Room {

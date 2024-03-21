@@ -75,6 +75,7 @@ dependencies {
     /**/testImplementation(Libs.Mockito.getMockitoKotlinVersion())
     testImplementation(Libs.Mockito.getMockitoVersion())
     testImplementation(Libs.Mockito.getMockitoInlineVersion())
+    testImplementation(Libs.Paging.getPagingCommonVersion())
 
     //instrumentation tests
     androidTestImplementation(Libs.Kotlin.getCoreTesting())
