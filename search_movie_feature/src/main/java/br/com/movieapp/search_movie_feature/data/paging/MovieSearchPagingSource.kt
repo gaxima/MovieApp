@@ -2,11 +2,9 @@ package br.com.movieapp.search_movie_feature.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import br.com.movieapp.search_movie_feature.data.mapper.toMovieSearch
 import br.com.movieapp.search_movie_feature.data.model.MovieSearch
 import br.com.movieapp.search_movie_feature.domain.source.MovieSearchRemoteDataSource
-import retrofit2.HttpException
-import java.io.IOException
+
 
 class MovieSearchPagingSource(
     private val query: String,
@@ -23,26 +21,22 @@ class MovieSearchPagingSource(
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieSearch> {
-            return try {
-                val pageNumber = params.key ?: 1
-                val response = movieSearchRemoteDataSource.getSearchMovies(query = query, page = pageNumber)
+        return try {
+            val pageNumber = params.key ?: 1
 
-                val movies = response.results
+            val response =
+                movieSearchRemoteDataSource.getSearchMovies(query = query, page = pageNumber)
+            val movies = response.movies
+            val totalPages = response.totalPages
 
-                LoadResult.Page(
-                    data = movies.toMovieSearch(),
-                    prevKey = if (pageNumber == 1) null else pageNumber - 1,
-                    nextKey = if (movies.isEmpty()) null else pageNumber + 1
-                )
-
-
-            } catch (e: IOException) {
-                e.printStackTrace()
-                return LoadResult.Error(e)
-            } catch (e: HttpException) {
-                e.printStackTrace()
-                return LoadResult.Error(e)
-            }
+            LoadResult.Page(
+                data = movies,
+                prevKey = if (pageNumber == 1) null else pageNumber - 1,
+                nextKey = if (pageNumber == totalPages) null else pageNumber + 1
+            )
+        } catch (e: Exception) {
+            LoadResult.Error(e)
+        }
     }
 
     companion object {
