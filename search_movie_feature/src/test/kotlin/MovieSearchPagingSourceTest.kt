@@ -82,7 +82,6 @@ class MovieSearchPagingSourceTest {
                 placeholdersEnabled = false
             )
         )
-
         //then
         assertThat(PagingSource.LoadResult.Error<Int, MovieSearch>(exception)).isEqualTo(result)
     }

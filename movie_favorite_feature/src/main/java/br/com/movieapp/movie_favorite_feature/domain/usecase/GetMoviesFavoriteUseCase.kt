@@ -5,6 +5,7 @@ import br.com.movieapp.commons.utils.ResultData
 import br.com.movieapp.movie_favorite_feature.domain.repository.MovieFavoriteRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
@@ -19,6 +20,10 @@ class GetMoviesFavoriteUseCaseImpl @Inject constructor(
 
 
     override suspend fun invoke(): Flow<List<Movie>> {
-        return repository.getFavoriteMovies()
+        return try {
+            repository.getFavoriteMovies()
+        } catch (e: Exception) {
+            emptyFlow()
+        }
     }
 }
