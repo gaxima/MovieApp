@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingConfig
 import br.com.movieapp.cmore.network.utils.Constants
 import br.com.movieapp.commons.model.Movie
 import br.com.movieapp.commons.utils.ResultData
@@ -142,11 +143,12 @@ class MovieDetailsViewModel @Inject constructor(
 
             is MovieDetailsEvent.GetMovieDetails -> {
                 viewModelScope.launch {
-                    movieDetailsUseCase.invoke(
+                   val resultData = movieDetailsUseCase.invoke(
                         params = GetMovieDetailsUseCase.Params(
-                            movieId = event.movieId
+                            movieId = event.movieId,
+                            pagingConfig = pagingConfig()
                         )
-                    ).collect() { resultData ->
+                    )
                         when (resultData) {
                             is ResultData.Success -> {
                                 uiState = uiState.copy(
@@ -180,4 +182,10 @@ class MovieDetailsViewModel @Inject constructor(
             }
         }
     }
-}
+
+    private fun pagingConfig(): PagingConfig {
+        return PagingConfig(
+            pageSize = 20,
+            initialLoadSize = 20
+        )
+    }

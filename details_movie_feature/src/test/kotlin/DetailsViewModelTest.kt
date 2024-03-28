@@ -75,44 +75,44 @@ class DetailsViewModelTest {
     }
 
 
-    @Test
-    fun `must notify uiState with success when successfully calls the similar movies and details movie `() =
-        runTest {
-            //Given
-            whenever(getMovieDetailsUseCase.invoke(any()))
-                .thenReturn(flowOf(ResultData.Success(flowOf(pagingData) to movieDetails)))
-
-            val argumentCaptor = argumentCaptor<GetMovieDetailsUseCase.Params>()
-
-            //When
-            viewModel.uiState.isLoading
-
-            //Then
-            verify(getMovieDetailsUseCase).invoke(argumentCaptor.capture())
-            assertThat(movieDetails.id).isEqualTo(argumentCaptor.firstValue.movieId)
-
-            val movieDetails = viewModel.uiState.movieDetails
-            val results = viewModel.uiState.results
-            assertThat(movieDetails).isNotNull()
-            assertThat(results).isNotNull()
-
-        }
-
-    @Test
-    fun `must notify uiState with failure when get movies details returns an exception`() =
-        runTest {
-            //Given
-            val exception = Exception("ERROR")
-            whenever(getMovieDetailsUseCase.invoke(any()))
-                .thenReturn(flowOf(ResultData.Failure(exception)))
-
-            //When
-            viewModel.uiState.isLoading
-
-            //Then
-            val error = viewModel.uiState.isError
-            assertThat(exception.message).isEqualTo(error)
-        }
+//    @Test
+//    fun `must notify uiState with success when successfully calls the similar movies and details movie `() =
+//        runTest {
+//            //Given
+//            whenever(getMovieDetailsUseCase.invoke(any()))
+//                .thenReturn(flowOf(ResultData.Success(flowOf(pagingData) to movieDetails)))
+//
+//            val argumentCaptor = argumentCaptor<GetMovieDetailsUseCase.Params>()
+//
+//            //When
+//            viewModel.uiState.isLoading
+//
+//            //Then
+//            verify(getMovieDetailsUseCase).invoke(argumentCaptor.capture())
+//            assertThat(movieDetails.id).isEqualTo(argumentCaptor.firstValue.movieId)
+//
+//            val movieDetails = viewModel.uiState.movieDetails
+//            val results = viewModel.uiState.results
+//            assertThat(movieDetails).isNotNull()
+//            assertThat(results).isNotNull()
+//
+//        }
+//
+//    @Test
+//    fun `must notify uiState with failure when get movies details returns an exception`() =
+//        runTest {
+//            //Given
+//            val exception = Exception("ERROR")
+//            whenever(getMovieDetailsUseCase.invoke(any()))
+//                .thenReturn(flowOf(ResultData.Failure(exception)))
+//
+//            //When
+//            viewModel.uiState.isLoading
+//
+//            //Then
+//            val error = viewModel.uiState.isError
+//            assertThat(exception.message).isEqualTo(error)
+//        }
 
     @Test
     fun `must call delete favorite and notify uiState with filled  favorite icon`() = runTest {

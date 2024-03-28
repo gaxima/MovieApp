@@ -36,6 +36,7 @@ class IsMovieFavoriteUseCaseTest {
         )
     }
 
+
     @Test
     fun `must return true when the call to the repository returns true`() = runTest {
         //Given
