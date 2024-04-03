@@ -21,6 +21,7 @@ import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import core.model.MovieDetailsFactory
 import core.model.MovieFactory
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 
@@ -46,18 +47,18 @@ class DetailsViewModelTest {
     @Mock
     lateinit var savedStateHandle: SavedStateHandle
 
-    private val movieDetails =
+    private val movieDetailsFactory =
         MovieDetailsFactory().create(poster = MovieDetailsFactory.Poster.Avengers)
 
     private val pagingData = PagingData.from(
         listOf(
-            MovieFactory().create(poster = MovieFactory.Poster.Avengers),
             MovieFactory().create(poster = MovieFactory.Poster.JohnWick),
+            MovieFactory().create(poster = MovieFactory.Poster.Avengers),
         )
     )
 
     private val movie =
-        MovieFactory().create(poster = MovieFactory.Poster.JohnWick)
+        MovieFactory().create(poster = MovieFactory.Poster.Avengers)
 
     private val viewModel by lazy {
 
@@ -74,45 +75,60 @@ class DetailsViewModelTest {
         )
     }
 
+    @Test
+    fun `must notify uiState with success when get movies similar and movies details returns success`() =
+        runTest {
+            //Given
+            whenever(getMovieDetailsUseCase.invoke(any()))
+                .thenReturn(
+                    (ResultData.Success(flowOf(pagingData) to movieDetailsFactory))
+                )
 
-//    @Test
-//    fun `must notify uiState with success when successfully calls the similar movies and details movie `() =
-//        runTest {
-//            //Given
-//            whenever(getMovieDetailsUseCase.invoke(any()))
-//                .thenReturn(flowOf(ResultData.Success(flowOf(pagingData) to movieDetails)))
-//
-//            val argumentCaptor = argumentCaptor<GetMovieDetailsUseCase.Params>()
-//
-//            //When
-//            viewModel.uiState.isLoading
-//
-//            //Then
-//            verify(getMovieDetailsUseCase).invoke(argumentCaptor.capture())
-//            assertThat(movieDetails.id).isEqualTo(argumentCaptor.firstValue.movieId)
-//
-//            val movieDetails = viewModel.uiState.movieDetails
-//            val results = viewModel.uiState.results
-//            assertThat(movieDetails).isNotNull()
-//            assertThat(results).isNotNull()
-//
-//        }
-//
-//    @Test
-//    fun `must notify uiState with failure when get movies details returns an exception`() =
-//        runTest {
-//            //Given
-//            val exception = Exception("ERROR")
-//            whenever(getMovieDetailsUseCase.invoke(any()))
-//                .thenReturn(flowOf(ResultData.Failure(exception)))
-//
-//            //When
-//            viewModel.uiState.isLoading
-//
-//            //Then
-//            val error = viewModel.uiState.isError
-//            assertThat(exception.message).isEqualTo(error)
-//        }
+            whenever(isMovieFavoriteUseCase.invoke(any())).thenReturn(
+                flowOf(ResultData.Success(true))
+            )
+
+            val argumentCaptor = argumentCaptor<GetMovieDetailsUseCase.Params>()
+            val checkedCaptor = argumentCaptor<IsMovieFavoriteUseCase.Params>()
+
+            //When
+            viewModel.uiState.isLoading
+
+            verify(isMovieFavoriteUseCase).invoke(checkedCaptor.capture())
+            assertThat(movie.id).isEqualTo(checkedCaptor.firstValue.movieId)
+
+            verify(getMovieDetailsUseCase).invoke(argumentCaptor.capture())
+            assertThat(movieDetailsFactory.id).isEqualTo(argumentCaptor.firstValue.movieId)
+
+            //Then
+            val movieDetails = viewModel.uiState.movieDetails
+            assertThat(movieDetails).isEqualTo(movieDetailsFactory)
+
+            val moviesSimilar = viewModel.uiState.results
+            assertThat(moviesSimilar.first()).isEqualTo(pagingData)
+        }
+
+    @Test
+    fun `must notify uiState with failure when get movies details returns an exception`() =
+        runTest {
+            //Given
+            val exception = Exception("ERROR")
+            whenever(getMovieDetailsUseCase.invoke(any()))
+                .thenReturn(
+                    (ResultData.Failure(exception))
+                )
+
+            whenever(isMovieFavoriteUseCase.invoke(any())).thenReturn(
+                flowOf(ResultData.Failure(exception))
+            )
+
+            //When
+            viewModel.uiState.isLoading
+
+            //Then
+            val error = viewModel.uiState.isError
+            assertThat(exception.message).isEqualTo(error)
+        }
 
     @Test
     fun `must call delete favorite and notify uiState with filled  favorite icon`() = runTest {
@@ -146,6 +162,10 @@ class DetailsViewModelTest {
             whenever(isMovieFavoriteUseCase.invoke(any()))
                 .thenReturn(flowOf(ResultData.Success(true)))
 
+            whenever(getMovieDetailsUseCase.invoke(any()))
+                .thenReturn(
+                    (ResultData.Success(flowOf(pagingData) to movieDetailsFactory))
+                )
             val checkedArgumentCaptor = argumentCaptor<IsMovieFavoriteUseCase.Params>()
 
             //When
@@ -156,5 +176,32 @@ class DetailsViewModelTest {
 
             val iconColor = viewModel.uiState.iconColor
             assertThat(iconColor).isEqualTo(Color.Red)
+        }
+
+    @Test
+    fun `must notify uiState with bookmark icon filled in if bookmark check returns false`() =
+        runTest {
+            val exception = Exception()
+            //Given
+            whenever(isMovieFavoriteUseCase.invoke(any()))
+                .thenReturn(flowOf(ResultData.Failure(exception)))
+
+
+            whenever(getMovieDetailsUseCase.invoke(any()))
+                .thenReturn(
+                    (ResultData.Success(flowOf(pagingData) to movieDetailsFactory))
+                )
+
+
+            val checkedArgumentCaptor = argumentCaptor<IsMovieFavoriteUseCase.Params>()
+
+            //When
+            viewModel.uiState.isLoading
+
+            verify(isMovieFavoriteUseCase).invoke(checkedArgumentCaptor.capture())
+            assertThat(movie.id).isEqualTo(checkedArgumentCaptor.firstValue.movieId)
+
+            val iconColor = viewModel.uiState.iconColor
+            assertThat(iconColor).isEqualTo(Color.White)
         }
 }

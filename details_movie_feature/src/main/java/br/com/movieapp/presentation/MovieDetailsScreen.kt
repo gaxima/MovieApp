@@ -9,6 +9,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import br.com.movieapp.commons.model.Movie
 import br.com.movieapp.presentation.components.MovieDetailsContent
@@ -39,7 +40,7 @@ fun MovieDetailsScreen(
             )
         },
         content = {
-            if (uiState.isLoading) {
+            if (pagingMoviesSimilar.loadState.refresh is LoadState.Loading && pagingMoviesSimilar.itemCount == 0) {
                 LoadingItem(
                     modifier = Modifier
                         .fillMaxSize()

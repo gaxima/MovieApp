@@ -42,7 +42,7 @@ class MovieDetailsViewModel @Inject constructor(
     init {
         movieId?.let { safeMovieId ->
             checkedFavorite(MovieDetailsEvent.CheckedFavorite(movieId = safeMovieId))
-//            getMovieDetails(MovieDetailsEvent.GetMovieDetails(movieId = safeMovieId))
+            getMovieDetails(MovieDetailsEvent.GetMovieDetails(movieId = safeMovieId))
         }
     }
 
@@ -143,49 +143,49 @@ class MovieDetailsViewModel @Inject constructor(
 
             is MovieDetailsEvent.GetMovieDetails -> {
                 viewModelScope.launch {
-                   val resultData = movieDetailsUseCase.invoke(
+                    val resultData = movieDetailsUseCase.invoke(
                         params = GetMovieDetailsUseCase.Params(
                             movieId = event.movieId,
                             pagingConfig = pagingConfig()
                         )
                     )
-                        when (resultData) {
-                            is ResultData.Success -> {
-                                uiState = uiState.copy(
-                                    isLoading = false,
-                                    movieDetails = resultData.data?.second,
-                                    results = resultData.data.first ?: emptyFlow(),
-                                )
-                            }
+                    when (resultData) {
+                        is ResultData.Success -> {
+                            uiState = uiState.copy(
+                                isLoading = false,
+                                movieDetails = resultData.data?.second,
+                                results = resultData.data.first ?: emptyFlow(),
+                            )
+                        }
 
-                            is ResultData.Failure -> {
-                                uiState = uiState.copy(
-                                    isLoading = false,
-                                    isError = resultData.e?.message.toString(),
-                                )
-                                UtilsFunctions.logError(
-                                    "DETAIL_ERROR",
-                                    resultData.e?.message.toString()
-                                )
-                            }
+                        is ResultData.Failure -> {
+                            uiState = uiState.copy(
+                                isLoading = false,
+                                isError = resultData.e?.message.toString(),
+                            )
+                            UtilsFunctions.logError(
+                                "DETAIL_ERROR",
+                                resultData.e?.message.toString()
+                            )
+                        }
 
-                            is ResultData.Loading -> {
-                                uiState = uiState.copy(
-                                    isLoading = true
-                                )
-                            }
-
+                        is ResultData.Loading -> {
+                            uiState = uiState.copy(
+                                isLoading = true
+                            )
                         }
 
                     }
+
                 }
             }
         }
     }
+}
 
-    private fun pagingConfig(): PagingConfig {
-        return PagingConfig(
-            pageSize = 20,
-            initialLoadSize = 20
-        )
-    }
+private fun pagingConfig(): PagingConfig {
+    return PagingConfig(
+        pageSize = 20,
+        initialLoadSize = 20
+    )
+}
