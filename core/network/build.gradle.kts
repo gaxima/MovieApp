@@ -16,19 +16,17 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        //load the values from .properties file
-        val keystoreFile = project.rootProject.file("apikey.properties")
-        val properties = Properties()
-        properties.load(keystoreFile.inputStream())
-        //return empty key in case something goes wrong
-        val apiKey = properties.getProperty("API_KEY") ?: ""
-        val baseUrlImage = properties.getProperty("BASE_URL_IMAGE") ?: ""
-        val baseUrl = properties.getProperty("BASE_URL") ?: ""
+        val apiKey = System.getenv("API_KEY") ?: ""
+
+        val baseUrlImage = System.getenv("BASE_URL_IMAGE") ?: ""
+
+        val baseUrl = System.getenv("BASE_URL") ?: ""
+
         buildConfigField(type = "String", name = "API_KEY", value = apiKey)
+
         buildConfigField(type = "String", name = "BASE_URL_IMAGE", value = baseUrlImage)
+
         buildConfigField(type = "String", name = "BASE_URL", value = baseUrl)
-
-
     }
 
     buildTypes {
