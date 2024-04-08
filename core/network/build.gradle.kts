@@ -29,6 +29,10 @@ android {
         buildConfigField(type = "String", name = "BASE_URL", value =  "\"$baseUrl\"")
     }
 
+    buildFeatures{
+        buildConfig = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
