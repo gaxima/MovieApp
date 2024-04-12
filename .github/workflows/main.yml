@@ -71,7 +71,7 @@ jobs:
           path: ./*/build/reports/tests/testDebugUnitTest/
 
   instrumentation-test:
-    needs: [unit-test]
+    needs: [ unit-test ]
     runs-on: macos-latest
     steps:
       - name: Checkout the code
