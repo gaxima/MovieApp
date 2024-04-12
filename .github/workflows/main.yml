@@ -83,6 +83,12 @@ jobs:
           java-version: 17
           distribution: 'adopt'
 
+      - name: Generate API Key properties file
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" > /home/runner/work/MovieApp/MovieApp/apikey.properties
+          echo "BASE_URL=${{ secrets.BASE_URL }}" >> /home/runner/work/MovieApp/MovieApp/apikey.properties
+          echo "BASE_URL_IMAGE=${{ secrets.BASE_URL_IMAGE }}" >> /home/runner/work/MovieApp/MovieApp/apikey.properties
+
       - name: Run espresso tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
