@@ -14,7 +14,6 @@ android {
     defaultConfig {
         minSdk = AppConfig.minSdkVersion
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         //load the values from .properties file
         val keystoreFile = project.rootProject.file("apikey.properties")
