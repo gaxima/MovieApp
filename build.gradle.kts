@@ -11,5 +11,6 @@ buildscript {
     dependencies{
         classpath(Libs.DaggerHilt.getDaggerHiltPluginVersion())
         classpath("com.android.tools.build:gradle:8.3.1")
+        classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3")
     }
 }
