@@ -85,9 +85,9 @@ jobs:
 
       - name: Generate API Key properties file
         run: |
-          echo "API_KEY=${{ secrets.API_KEY }}" > /Users/home/runner/work/MovieApp/MovieApp/apikey.properties
-          echo "BASE_URL=${{ secrets.BASE_URL }}" >> /Users/home/runner/work/MovieApp/MovieApp/apikey.properties
-          echo "BASE_URL_IMAGE=${{ secrets.BASE_URL_IMAGE }}" >> /Users/home/runner/work/MovieApp/MovieApp/apikey.properties
+          echo "API_KEY=${{ secrets.API_KEY }}" > /Users/runner/work/MovieApp/MovieApp/apikey.properties
+          echo "BASE_URL=${{ secrets.BASE_URL }}" >> /Users/runner/work/MovieApp/MovieApp/apikey.properties
+          echo "BASE_URL_IMAGE=${{ secrets.BASE_URL_IMAGE }}" >> /Users/runner/work/MovieApp/MovieApp/apikey.properties
 
       - name: Run espresso tests
         uses: reactivecircus/android-emulator-runner@v2
