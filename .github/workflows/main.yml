@@ -122,10 +122,13 @@ jobs:
               echo "BASE_URL=${{ secrets.BASE_URL }}" >> /home/runner/work/MovieApp/MovieApp/apikey.properties
               echo "BASE_URL_IMAGE=${{ secrets.BASE_URL_IMAGE }}" >> /home/runner/work/MovieApp/MovieApp/apikey.properties
 
+#new one
       - name: SonarCloud Scan
         run: ./gradlew sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+
+
 
 
 
