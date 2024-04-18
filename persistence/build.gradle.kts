@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("org.sonarqube")
 }
 
 android {
@@ -27,6 +28,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+    sonarqube{
+        properties{
+            property("sonar.sources", "src/main")
+        }
     }
 }
 

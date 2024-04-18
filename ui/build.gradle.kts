@@ -1,6 +1,7 @@
 plugins {
-    id ("com.android.library")
-    id ("org.jetbrains.kotlin.android")
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id("org.sonarqube")
 }
 
 android {
@@ -31,6 +32,11 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    sonarqube {
+        properties {
+            property("sonar.sources", "src/main")
+        }
+    }
 }
 
 dependencies {
@@ -46,8 +52,8 @@ dependencies {
     api(Libs.Compose.getComposeMaterialVersion())
     api(Libs.Compose.getComposeToolingVersion())
     api(Libs.Compose.getLifeCycleComposeRuntimeVersion())
-    debugImplementation (Libs.Compose.getComposeUiTestManifestVersion())
-    api (Libs.FlowLayout.getFlowVersion())
+    debugImplementation(Libs.Compose.getComposeUiTestManifestVersion())
+    api(Libs.FlowLayout.getFlowVersion())
     implementation("com.google.android.material:material:1.11.0")
 
 

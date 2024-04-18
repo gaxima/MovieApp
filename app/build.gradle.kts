@@ -1,4 +1,3 @@
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -51,6 +50,14 @@ android {
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+    sonarqube {
+        properties {
+            property("sonar.projectKey", "gaxima_MovieApp")
+            property("sonar.organization", "gaxima")
+            property("sonar.host.url", "https://sonarcloud.io")
+            property("sonar.gradle.skipCompile", "true")
         }
     }
 }
