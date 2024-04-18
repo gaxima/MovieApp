@@ -124,10 +124,15 @@ jobs:
 
 #new one
       - name: SonarCloud Scan
-        run: ./gradlew sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        uses: sonarsource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+        with:
+          args: >
+            -Dsonar.projectKey=MovieApp
+            -Dsonar.organization=gaxima
 
 
 
