@@ -47,7 +47,7 @@ android {
     }
     sonarqube{
         properties{
-            property("sonar.sources", "/network/src/main")
+            property("sonar.sources", "src/main")
         }
     }
 }

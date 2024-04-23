@@ -58,6 +58,7 @@ android {
             property("sonar.organization", "gaxima")
             property("sonar.host.url", "https://sonarcloud.io")
             property("sonar.gradle.skipCompile", "true")
+            property("sonar.sources", "src/main")
         }
     }
 }
