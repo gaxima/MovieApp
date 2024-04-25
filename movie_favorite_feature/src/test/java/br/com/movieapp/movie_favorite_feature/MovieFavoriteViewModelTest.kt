@@ -38,6 +38,7 @@ class MovieFavoriteViewModelTest {
         )
 
 
+
     @Test
     fun `must validate data object values when calling list of favorites`() = runTest {
         // Given

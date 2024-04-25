@@ -115,8 +115,6 @@ object Libs {
     }
 
     object Compose {
-
-
         fun getComposeUIVersion() = "androidx.compose.ui:ui:${Versions.COMPOSE_UI_VERSION}"
 
         fun getComposeMaterialVersion() =
