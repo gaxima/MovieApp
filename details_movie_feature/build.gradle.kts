@@ -1,9 +1,8 @@
 plugins {
-    id ("com.android.library")
-    id ("org.jetbrains.kotlin.android")
-    id ("com.google.dagger.hilt.android")
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
-    id("org.sonarqube")
 }
 
 android {
@@ -34,19 +33,14 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
-    sonarqube{
-        properties{
-            property("sonar.sources", "src/main")
-        }
-    }
 }
 
 dependencies {
 
-    implementation (project(":ui"))
-    implementation (project(":core:network"))
-    implementation (project(":commons"))
-    implementation (project(":movie_favorite_feature"))
+    implementation(project(":ui"))
+    implementation(project(":core:network"))
+    implementation(project(":commons"))
+    implementation(project(":movie_favorite_feature"))
 
     implementation(Libs.Kotlin.coreKtxVersion())
     implementation(Libs.Kotlin.getAppCompact())

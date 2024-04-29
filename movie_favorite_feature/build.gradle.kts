@@ -3,7 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id ("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
-    id("org.sonarqube")
 }
 
 android {
@@ -35,11 +34,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
-    sonarqube{
-        properties{
-            property("sonar.sources", "src/main")
-        }
-    }
+
 }
 
 dependencies {
