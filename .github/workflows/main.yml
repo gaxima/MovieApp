@@ -80,6 +80,7 @@ jobs:
         with:
           java-version: 17
           distribution: 'adopt'
+          check-latest: true
 
       - name: Generate API Key properties file
         run: |
@@ -92,7 +93,10 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: ./gradlew connectedCheck
+          target: default
+          arch: x86
+          profile: Nexus 6
+          script: ./gradlew connectedCheck --stacktrace
 
       - name: Upload test report
         uses: actions/upload-artifact@v2
