@@ -5,7 +5,9 @@ name: CI
 #Controls when the action will run.
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - sonarcloud-feature
   pull_request:
     branches: [ main ]
 
