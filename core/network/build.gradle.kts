@@ -5,7 +5,6 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
-    id("org.sonarqube")
 }
 
 android {
@@ -24,12 +23,12 @@ android {
         val apiKey = properties.getProperty("API_KEY") ?: ""
         val baseUrlImage = properties.getProperty("BASE_URL_IMAGE") ?: ""
         val baseUrl = properties.getProperty("BASE_URL") ?: ""
-        buildConfigField(type = "String", name = "API_KEY", value =  "\"$apiKey\"")
-        buildConfigField(type = "String", name = "BASE_URL_IMAGE", value =  "\"$baseUrlImage\"")
-        buildConfigField(type = "String", name = "BASE_URL", value =  "\"$baseUrl\"")
+        buildConfigField(type = "String", name = "API_KEY", value = "\"$apiKey\"")
+        buildConfigField(type = "String", name = "BASE_URL_IMAGE", value = "\"$baseUrlImage\"")
+        buildConfigField(type = "String", name = "BASE_URL", value = "\"$baseUrl\"")
     }
 
-    buildFeatures{
+    buildFeatures {
         buildConfig = true
     }
 
