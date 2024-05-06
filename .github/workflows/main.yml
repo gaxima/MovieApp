@@ -71,7 +71,7 @@ jobs:
 
   instrumentation-test:
       needs: [ unit-test ]
-      runs-on: macos-latest
+      runs-on: ubuntu-latest
       steps:
         - name: Checkout the code
           uses: actions/checkout@v2
@@ -85,9 +85,9 @@ jobs:
 
         - name: Generate API Key properties file
           run: |
-            echo "API_KEY=${{ secrets.API_KEY }}" > /Users/runner/work/MovieApp/MovieApp/apikey.properties
-            echo "BASE_URL=${{ secrets.BASE_URL }}" >> /Users/runner/work/MovieApp/MovieApp/apikey.properties
-            echo "BASE_URL_IMAGE=${{ secrets.BASE_URL_IMAGE }}" >> /Users/runner/work/MovieApp/MovieApp/apikey.properties
+            echo "API_KEY=${{ secrets.API_KEY }}" > /home/runner/work/MovieApp/MovieApp/apikey.properties
+            echo "BASE_URL=${{ secrets.BASE_URL }}" >> /home/runner/work/MovieApp/MovieApp/apikey.properties
+            echo "BASE_URL_IMAGE=${{ secrets.BASE_URL_IMAGE }}" >> /home/runner/work/MovieApp/MovieApp/apikey.properties
 
 
         - name: Run espresso tests
