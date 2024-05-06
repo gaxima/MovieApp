@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("org.sonarqube")
 }
 
 android {
@@ -48,7 +49,7 @@ dependencies {
     api(Libs.Compose.getLifeCycleComposeRuntimeVersion())
     debugImplementation(Libs.Compose.getComposeUiTestManifestVersion())
     api(Libs.FlowLayout.getFlowVersion())
-    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.android.material:material:1.12.0")
 
 
     api(Libs.Coil.getCoilVersion())
