@@ -49,23 +49,11 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
-<<<<<<< Updated upstream
     packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    sonarqube {
-        properties {
-            property("sonar.projectKey", "gaxima_MovieApp")
-            property("sonar.organization", "gaxima")
-            property("sonar.host.url", "https://sonarcloud.io")
-            property("sonar.gradle.skipCompile", "true")
-            property("sonar.sources", "src/main")
-        }
-    }
-=======
->>>>>>> Stashed changes
 }
 
 dependencies {

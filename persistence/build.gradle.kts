@@ -29,11 +29,6 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    sonarqube{
-        properties{
-            property("sonar.sources", "src/main")
-        }
-    }
 }
 
 dependencies {

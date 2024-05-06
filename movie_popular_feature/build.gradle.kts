@@ -34,11 +34,6 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
-    sonarqube{
-        properties{
-            property("sonar.sources", "src/main")
-        }
-    }
 }
 
 dependencies {
