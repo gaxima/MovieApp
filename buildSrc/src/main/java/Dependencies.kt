@@ -80,6 +80,8 @@ object Versions {
     const val MOCKK_VERSION = "1.12.3"
 
     const val JAVAX_INJECT_VERSION = "1"
+
+    const val ROBOLECTRIC_VERSION = "4.11.1"
 }
 
 object Libs {
@@ -286,6 +288,10 @@ object Libs {
 
         fun getCoroutinesTestVersion() =
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_VERSION}"
+
+        fun getRoboletricVersion() =
+            "org.robolectric:robolectric:${Versions.ROBOLECTRIC_VERSION}"
+
     }
 
     object Paging {
