@@ -1,4 +1,3 @@
-import com.github.javaparser.resolution.types.ResolvedLambdaConstraintType.bound
 import kotlinx.kover.gradle.plugin.dsl.AggregationType
 import kotlinx.kover.gradle.plugin.dsl.MetricType
 
