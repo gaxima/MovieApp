@@ -9,7 +9,6 @@ import br.com.movieapp.persistence.MovieDataBase
 import br.com.movieapp.persistence.data.dao.MovieDao
 import br.com.movieapp.persistence.data.entity.MovieEntity
 import com.google.common.truth.Truth.assertThat
-import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
@@ -20,8 +19,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import javax.inject.Inject
-import javax.inject.Named
+
 
 @ExperimentalCoroutinesApi
 @HiltAndroidTest
