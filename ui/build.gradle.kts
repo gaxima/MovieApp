@@ -32,6 +32,14 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    sonarqube{
+        properties{
+            property("sonar.projectKey", "gaxima_MovieApp")
+            property("sonar.organization", "gaxima")
+            property("sonar.host.url", "https://sonarcloud.io")
+            property("sonar.sources", "src/")
+        }
+    }
 }
 
 dependencies {

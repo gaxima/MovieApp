@@ -37,6 +37,14 @@ android {
             isIncludeAndroidResources = true
         }
     }
+    sonarqube{
+        properties{
+            property("sonar.projectKey", "gaxima_MovieApp")
+            property("sonar.organization", "gaxima")
+            property("sonar.host.url", "https://sonarcloud.io")
+            property("sonar.sources", "src/")
+        }
+    }
 }
 
 dependencies {
@@ -76,9 +84,9 @@ dependencies {
     testImplementation(Libs.Mockito.getMockitoVersion())
     testImplementation(Libs.Mockito.getMockitoInlineVersion())
 
-//    androidTestImplementation(Libs.Test.getExtJunitVersion())
+    androidTestImplementation(Libs.Test.getExtJunitVersion())
     testImplementation(Libs.Test.getExtJunitVersion())
-//    androidTestImplementation(Libs.Test.getEspressoVersion())
+    androidTestImplementation(Libs.Test.getEspressoVersion())
      testImplementation(Libs.Test.getEspressoVersion())
 
 //    androidTestImplementation(Libs.Test.getComposeUiTestVersion())

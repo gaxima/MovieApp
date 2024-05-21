@@ -34,6 +34,14 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+    sonarqube{
+        properties{
+            property("sonar.projectKey", "gaxima_MovieApp")
+            property("sonar.organization", "gaxima")
+            property("sonar.host.url", "https://sonarcloud.io")
+            property("sonar.sources", "src/")
+        }
+    }
 }
 
 dependencies {
