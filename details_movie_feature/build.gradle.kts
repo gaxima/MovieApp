@@ -1,9 +1,25 @@
+import kotlinx.kover.gradle.plugin.dsl.AggregationType
+import kotlinx.kover.gradle.plugin.dsl.MetricType
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
     id("org.sonarqube")
+    id("org.jetbrains.kotlinx.kover")
+}
+
+koverReport{
+    verify{
+        rule("Minimal line coverage in percentage"){
+            bound{
+                minValue = 20
+                metric = MetricType.LINE
+                aggregation = AggregationType.COVERED_PERCENTAGE
+            }
+        }
+    }
 }
 
 android {
@@ -34,13 +50,12 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
-    sonarqube{
-        properties{
-            property("sonar.projectKey", "gaxima_MovieApp")
-            property("sonar.organization", "gaxima")
-            property("sonar.host.url", "https://sonarcloud.io")
-            property("sonar.sources", "src/")
-        }
+}
+sonar{
+    properties{
+        property("sonar.projectKey", "gaxima_MovieApp")
+        property("sonar.organization", "gaxima")
+        property("sonar.host.url", "https://sonarcloud.io")
     }
 }
 

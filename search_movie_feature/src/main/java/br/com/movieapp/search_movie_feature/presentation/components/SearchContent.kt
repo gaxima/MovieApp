@@ -123,7 +123,6 @@ fun SearchContent(
     }
 }
 
-
 @Preview
 @Composable
 fun SearchContentPreview() {

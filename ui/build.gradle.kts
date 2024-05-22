@@ -32,13 +32,14 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    sonarqube{
-        properties{
-            property("sonar.projectKey", "gaxima_MovieApp")
-            property("sonar.organization", "gaxima")
-            property("sonar.host.url", "https://sonarcloud.io")
-            property("sonar.sources", "src/")
-        }
+}
+
+
+sonar{
+    properties{
+        property("sonar.projectKey", "gaxima_MovieApp")
+        property("sonar.organization", "gaxima")
+        property("sonar.host.url", "https://sonarcloud.io")
     }
 }
 
@@ -47,7 +48,6 @@ dependencies {
     implementation(Libs.Kotlin.coreKtxVersion())
     implementation(Libs.Kotlin.getAppCompact())
     api(Libs.Material.getMaterialVersion())
-
 
     api(Libs.Activity.getActivityComposeVersion())
     api(Libs.Compose.getComposeUIVersion())
@@ -58,7 +58,6 @@ dependencies {
     debugImplementation(Libs.Compose.getComposeUiTestManifestVersion())
     api(Libs.FlowLayout.getFlowVersion())
     implementation("com.google.android.material:material:1.12.0")
-
 
     api(Libs.Coil.getCoilVersion())
 }

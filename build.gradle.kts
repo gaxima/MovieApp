@@ -4,8 +4,9 @@ plugins {
     id("com.android.library") version "8.3.1" apply false
     id("org.jetbrains.kotlin.android") version "1.9.0" apply false
     id("com.google.devtools.ksp") version "1.9.0-1.0.13" apply false
-    id("org.sonarqube") version "3.3" apply false
-    id("org.jetbrains.kotlinx.kover") version "0.7.6" apply false}
+    id("org.sonarqube") version "5.0.0.4638" apply false
+    id("org.jetbrains.kotlinx.kover") version "0.7.6" apply false
+}
 
 buildscript {
     dependencies {
@@ -13,6 +14,9 @@ buildscript {
         classpath("com.android.tools.build:gradle:8.3.1")
     }
 }
+
+
+
 
 
 

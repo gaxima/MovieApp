@@ -53,18 +53,16 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    sonarqube{
+}
+subprojects{
+    sonar{
         properties{
-            property("sonar.projectKey", "gaxima_MovieApp")
-            property("sonar.organization", "gaxima")
-            property("sonar.host.url", "https://sonarcloud.io")
-            property("sonar.sources", "src/")
+            property("sonar.sources", "src")
         }
     }
 }
 
 dependencies {
-
 
     implementation(project(":core:network"))
     implementation(project(":commons"))
@@ -73,8 +71,6 @@ dependencies {
     implementation(project(":search_movie_feature"))
     implementation(project(":details_movie_feature"))
     implementation(project(":movie_favorite_feature"))
-
-
 
     implementation(Libs.Kotlin.coreKtxVersion())
 

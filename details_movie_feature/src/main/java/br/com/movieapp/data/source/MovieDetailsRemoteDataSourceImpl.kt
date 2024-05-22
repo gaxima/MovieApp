@@ -28,7 +28,8 @@ class MovieDetailsRemoteDataSourceImpl @Inject constructor(
             releaseDate = response.release_date,
             voteAverage = response.vote_average,
             duration = response.runtime,
-            voteCount = response.vote_count
+            voteCount = response.vote_count,
+
         )
     }
 
