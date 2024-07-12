@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
+    //comentário pra testar git
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
